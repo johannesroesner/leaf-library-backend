@@ -1,0 +1,30 @@
+{
+  "name": "leaf-library-backend",
+  "version": "1.0.0",
+  "description": "leaf-library backend ",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johannesroesner/leaf-library-backend.git"
+  },
+  "author": "Johannes Rösner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johannesroesner/leaf-library-backend/issues"
+  },
+  "homepage": "https://github.com/johannesroesner/leaf-library-backend#readme",
+  "devDependencies": {
+    "@types/node": "^24.9.2",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3"
+  }
+}

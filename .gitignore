@@ -1,0 +1,37 @@
+# ide
+.idea/
+.vscode/
+.fleet/
+
+# macOS
+.DS_Store/
+
+# compiled typescript
+dist/
+
+# logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# dependency directories
+node_modules/
+
+# optional npm cache directory
+.npm
+
+# optional eslint cache
+.eslintcache
+
+# optional REPL history
+.node_repl_history
+
+# dotenv environment variables file
+.env
+.env.test
+.env.production
+
