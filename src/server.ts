@@ -13,7 +13,6 @@ const init = async () => {
   });
 
   server.route(webRoutes);
-
   await server.start();
   console.log("Server running on %s", server.info.uri);
 };

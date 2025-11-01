@@ -6,7 +6,10 @@
   "type": "module",
   "scripts": {
     "start": "node ./dist/server.js",
-    "format": "npx prettier --write ./src/*"
+    "format": "prettier --write ./src/*",
+    "lint": "eslint 'src/**/*.{ts,js}'",
+    "build": "tsc",
+    "test": ""
   },
   "repository": {
     "type": "git",
