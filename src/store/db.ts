@@ -49,6 +49,8 @@ export interface CollectionStore {
   deleteAll(): Promise<Collection[]>;
 
   deleteById(collectionId: Collection["_id"]): Promise<Collection | null>;
+
+  addPlantToCollection(collectionId: Collection["_id"], plantId: Plant["_id"]): Promise<Collection | null>;
 }
 
 interface DataBase {
