@@ -18,7 +18,7 @@ export const plantJsonStore: PlantStore = {
 
   async getAllForUser(userId: User["_id"]): Promise<Plant[]> {
     await jsonFile.read();
-    return jsonFile.data.plants.filter((p: Plant) => (p.userId = userId));
+    return jsonFile.data.plants.filter((p: Plant) => p.userId === userId);
   },
 
   async createForUser(userId: User["_id"], newPlant: Partial<Plant>): Promise<Plant> {
