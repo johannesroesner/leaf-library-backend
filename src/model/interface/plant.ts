@@ -1,6 +1,5 @@
 import type { User } from "./user.js";
 
-
 export type PlantType = "Tree" | "Flower" | "Fern" | "Moss" | "Grass" | "Aquatic Plant" | "Climber" | "Other";
 
 export type Biome = "Urban" | "Meadow" | "Forest" | "Pond" | "River" | "Sea" | "Desert" | "Other";
