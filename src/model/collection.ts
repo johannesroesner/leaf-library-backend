@@ -7,5 +7,5 @@ export interface Collection {
   description: String;
   imgUrl: String;
   userId: User["id"];
-  plantIds: Plant["id"] [];
+  plantIds: Plant["id"][];
 }
