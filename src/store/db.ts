@@ -26,7 +26,7 @@ export interface PlantStore {
 
   getAllForUser(userId: User["_id"]): Promise<Plant[]>;
 
-  createForUser(userId: User["_id"], newPlant: Partial<Plant>): Promise<User>;
+  createForUser(userId: User["_id"], newPlant: Partial<Plant>): Promise<Plant>;
 
   update(plant: Plant): Promise<Plant | null>;
 

@@ -17,7 +17,7 @@ export const userJsonStore: UserStore = {
 
   async create(newUser: Partial<User>): Promise<User> {
     await jsonFile.read();
-    const user: User = { ...newUser, _id: v4(), imgUrl: "placeholder.com" } as User;
+    const user: User = { ...newUser, _id: v4() } as User;
     jsonFile.data.users.push(user);
     await jsonFile.write();
     return user;
@@ -38,6 +38,7 @@ export const userJsonStore: UserStore = {
     await jsonFile.read();
     const foundUsers = jsonFile.data.users;
     jsonFile.data.users = [];
+    await jsonFile.write();
     return foundUsers;
   },
 

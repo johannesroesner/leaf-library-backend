@@ -10,8 +10,8 @@ export interface Plant {
   scientificName: String;
   type: PlantType;
   biome: Biome;
-  imageUrls: String[];
-  note: String;
+  imageUrls: String[] | null;
+  note: String | null;
   date: Date;
   latitude: Number;
   longitude: Number;

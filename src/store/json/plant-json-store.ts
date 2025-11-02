@@ -1,0 +1,60 @@
+import { v4 } from "uuid";
+import type { PlantStore } from "../db.js";
+import type { User } from "../../model/user.js";
+import { jsonFile } from "./store-util.js";
+import type { Plant } from "../../model/plant.js";
+
+export const plantJsonStore: PlantStore = {
+  async getAll(): Promise<Plant[]> {
+    await jsonFile.read();
+    return jsonFile.data.plants;
+  },
+
+  async getById(plantId: Plant["_id"]): Promise<Plant | null> {
+    await jsonFile.read();
+    const foundPlant = jsonFile.data.users.filter((p: Plant) => p._id === plantId);
+    return foundPlant ?? null;
+  },
+
+  async getAllForUser(userId: User["_id"]): Promise<Plant[]> {
+    await jsonFile.read();
+    return jsonFile.data.plants.filter((p: Plant) => (p.userId = userId));
+  },
+
+  async createForUser(userId: User["_id"], newPlant: Partial<Plant>): Promise<Plant> {
+    await jsonFile.read();
+    const plant: Plant = { ...newPlant, _id: v4(), userId: userId } as Plant;
+    jsonFile.data.plants.push(plant);
+    await jsonFile.write();
+    return plant;
+  },
+
+  async update(plant: Plant): Promise<Plant | null> {
+    await jsonFile.read();
+    const index = jsonFile.data.plants.findIndex((p: Plant) => p._id === plant._id);
+    if (index === -1) {
+      return null;
+    }
+    jsonFile.data.plants[index] = plant;
+    await jsonFile.write();
+    return plant;
+  },
+
+  async deleteAll(): Promise<Plant[]> {
+    await jsonFile.read();
+    const foundPlants = jsonFile.data.plants;
+    jsonFile.data.plants = [];
+    await jsonFile.write();
+    return foundPlants;
+  },
+
+  async deleteById(plantId: Plant["_id"]): Promise<Plant | null> {
+    await jsonFile.read();
+    const index = jsonFile.data.plants.findIndex((p: Plant) => p._id === plantId);
+    if (index === -1) return null;
+    const plant: Plant = jsonFile.data.plants[index];
+    jsonFile.data.plants.splice(index, 1);
+    await jsonFile.write();
+    return plant;
+  },
+};
