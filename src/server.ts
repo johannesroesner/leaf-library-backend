@@ -1,4 +1,5 @@
 import Hapi from "@hapi/hapi";
+import Inert from "@hapi/inert";
 import Vision from "@hapi/vision";
 import dotenv from "dotenv";
 import { fileURLToPath } from "node:url";
@@ -24,7 +25,7 @@ const init = async () => {
   });
 
   // register plugins
-  await server.register(Vision);
+  await server.register([Vision, Inert]);
 
   // register template engine
   server.views({
