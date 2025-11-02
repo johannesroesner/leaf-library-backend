@@ -1,9 +1,9 @@
 import { v4 } from "uuid";
-import type { CollectionStore, PlantStore } from "../db.js";
-import type { User } from "../../model/user.js";
+import type { CollectionStore } from "../../db.js";
 import { jsonFile } from "./store-util.js";
-import type { Collection } from "../../model/collection.js";
-import type { Plant } from "../../model/plant.js";
+import type { Collection, NewCollection } from "../../interface/collection.js";
+import type { User } from "../../interface/user.js";
+import type { Plant } from "../../interface/plant.js";
 
 export const collectionJsonStore: CollectionStore = {
   async getAll(): Promise<Collection[]> {
@@ -22,9 +22,9 @@ export const collectionJsonStore: CollectionStore = {
     return jsonFile.data.collections.filter((c: Collection) => c.userId === userId);
   },
 
-  async createForUser(userId: User["_id"], newCollection: Partial<Collection>): Promise<Collection> {
+  async createForUser(userId: User["_id"], newCollection: NewCollection): Promise<Collection> {
     await jsonFile.read();
-    const collection: Collection = { ...newCollection, _id: v4(), userId: userId } as Collection;
+    const collection: Collection = { ...newCollection, _id: v4(), userId: userId, plantIds: [] } as Collection;
     jsonFile.data.collections.push(collection);
     await jsonFile.write();
     return collection;

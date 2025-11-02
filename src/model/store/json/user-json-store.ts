@@ -1,7 +1,7 @@
 import { v4 } from "uuid";
-import type { UserStore } from "../db.js";
-import type { User } from "../../model/user.js";
+import type { UserStore } from "../../db.js";
 import { jsonFile } from "./store-util.js";
+import type { NewUser, User } from "../../interface/user.js";
 
 export const userJsonStore: UserStore = {
   async getAll(): Promise<User[]> {
@@ -15,9 +15,9 @@ export const userJsonStore: UserStore = {
     return foundUser ?? null;
   },
 
-  async create(newUser: Partial<User>): Promise<User> {
+  async create(newUser: NewUser): Promise<User> {
     await jsonFile.read();
-    const user: User = { ...newUser, _id: v4() } as User;
+    const user: User = { ...newUser, _id: v4(), aboutMe: null, imageUrl: null } as User;
     jsonFile.data.users.push(user);
     await jsonFile.write();
     return user;
@@ -38,7 +38,7 @@ export const userJsonStore: UserStore = {
     await jsonFile.read();
     const foundUsers = jsonFile.data.users;
     jsonFile.data.users = [];
-    await jsonFile.write();
+    const test = await jsonFile.write();
     return foundUsers;
   },
 

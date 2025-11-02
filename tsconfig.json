@@ -10,7 +10,8 @@
       "esnext"
     ],
     "types": [
-      "node"
+      "node",
+      "mocha"
     ],
     // other outputs
     "sourceMap": true,
@@ -26,5 +27,10 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
-  }
+  },
+  // file includes
+  "include": [
+    "src",
+    "test"
+  ],
 }

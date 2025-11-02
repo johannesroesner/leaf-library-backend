@@ -1,8 +1,8 @@
 import { v4 } from "uuid";
-import type { PlantStore } from "../db.js";
-import type { User } from "../../model/user.js";
+import type { NewPlant, Plant } from "../../interface/plant.js";
 import { jsonFile } from "./store-util.js";
-import type { Plant } from "../../model/plant.js";
+import type { PlantStore } from "../../db.js";
+import type { User } from "../../interface/user.js";
 
 export const plantJsonStore: PlantStore = {
   async getAll(): Promise<Plant[]> {
@@ -21,9 +21,9 @@ export const plantJsonStore: PlantStore = {
     return jsonFile.data.plants.filter((p: Plant) => p.userId === userId);
   },
 
-  async createForUser(userId: User["_id"], newPlant: Partial<Plant>): Promise<Plant> {
+  async createForUser(userId: User["_id"], newPlant: NewPlant): Promise<Plant> {
     await jsonFile.read();
-    const plant: Plant = { ...newPlant, _id: v4(), userId: userId } as Plant;
+    const plant: Plant = { ...newPlant, _id: v4(), userId: userId, date: new Date() } as Plant;
     jsonFile.data.plants.push(plant);
     await jsonFile.write();
     return plant;

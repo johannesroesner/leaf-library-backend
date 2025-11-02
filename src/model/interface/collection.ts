@@ -9,3 +9,5 @@ export interface Collection {
   userId: User["_id"];
   plantIds: Plant["_id"][];
 }
+
+export type NewCollection = Omit<Collection, "_id" | "userId" | "plantIds">;
