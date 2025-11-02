@@ -5,7 +5,7 @@ export type PlantType = "Tree" | "Flower" | "Fern" | "Moss" | "Grass" | "Aquatic
 export type Biome = "Urban" | "Meadow" | "Forest" | "Pond" | "River" | "Sea" | "Desert" | "Other";
 
 export interface Plant {
-  id: String;
+  _id: String;
   commonName: String;
   scientificName: String;
   type: PlantType;
@@ -15,5 +15,5 @@ export interface Plant {
   date: Date;
   latitude: Number;
   longitude: Number;
-  userId: User["id"];
+  userId: User["_id"];
 }

@@ -38,6 +38,8 @@
     "@hapi/inert": "^7.1.0",
     "@hapi/vision": "^7.0.3",
     "dotenv": "^17.2.3",
-    "handlebars": "^4.7.8"
+    "handlebars": "^4.7.8",
+    "lowdb": "^7.0.1",
+    "uuid": "^13.0.0"
   }
 }
