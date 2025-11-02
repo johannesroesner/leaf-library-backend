@@ -1,6 +1,12 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     {{> leaf-library-brand}}
+    <a id="burger" class="navbar-burger" style="color: black;" role="button" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
   </div>
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-end">
@@ -15,5 +21,12 @@
 </nav>
 
 <script>
-  document.getElementById("{{active}}").classList.add("is-primary");
+  // toggle burger menu
+  const burger = document.getElementById("burger");
+  const menu = document.getElementById("navbarBasicExample");
+
+  burger.addEventListener("click", function() {
+    burger.classList.toggle("is-active");
+    menu.classList.toggle("is-active");
+  });
 </script>
