@@ -1,10 +1,11 @@
 import { suite, test, setup } from "mocha";
 import { dataBase } from "../../src/model/db.js";
+// @ts-ignore
 import { newTestUsers } from "../fixture.js";
 
 suite("user model tests", () => {
   setup(async () => {
-    await dataBase.init("json");
+    dataBase.init("json");
     await dataBase.userStore!.deleteAll();
   });
 
