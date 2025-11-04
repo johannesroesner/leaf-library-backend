@@ -1,32 +1,38 @@
 import type { ServerRoute } from "@hapi/hapi";
-import { accountController } from "./controller/account-controller";
+import { accountController } from "./controller/account-controller.js";
 
 export const webRoutes: ServerRoute[] = [
   {
     method: "GET",
     path: "/",
-    options: {
-      auth: false,
-      handler: accountController.index,
-    },
+    options: accountController.index,
   },
   {
     method: "GET",
     path: "/signup",
-    options: {
-      auth: false,
-      handler: accountController.signupGet,
-    },
+    options: accountController.signupGet,
   },
   {
     method: "POST",
     path: "/signup",
-    options: {
-      auth: false,
-      handler: accountController.signupPost,
-    },
+    options: accountController.signupPost,
+  },
+  {
+    method: "GET",
+    path: "/login",
+    options: accountController.loginGet,
+  },
+  {
+    method: "POST",
+    path: "/login",
+    options: accountController.loginPost,
   },
 
-  // static ressources route for @hapi/inert plugin
-  { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } } },
+  // route for static resources
+  {
+    method: "GET",
+    path: "/{param*}",
+    handler: { directory: { path: "./public" } },
+    options: { auth: false },
+  },
 ];

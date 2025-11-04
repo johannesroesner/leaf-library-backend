@@ -7,8 +7,8 @@ import { fileURLToPath } from "node:url";
 import * as path from "node:path";
 import Handlebars from "handlebars";
 import { webRoutes } from "./web-routes.js";
-import { dataBase } from "./model/db.js";
-import { accountController } from "./controller/account-controller";
+import { database } from "./model/database.js";
+import { accountController, validate } from "./controller/account-controller.js";
 
 // check if .env file is present
 const result: any = dotenv.config();
@@ -24,7 +24,7 @@ const __dirname: string = path.dirname(__filename);
 const init = async () => {
   const server = Hapi.server({
     port: process.env.PORT,
-    host: process.env.HOsST,
+    host: process.env.HOSTe,
   });
 
   // register plugins
@@ -38,7 +38,7 @@ const init = async () => {
       isSecure: false,
     },
     redirectTo: "/",
-    validate: accountController.validate,
+    validate: validate,
   });
   server.auth.default("session");
 
@@ -59,7 +59,7 @@ const init = async () => {
   server.route(webRoutes);
 
   // dataBase init
-  dataBase.init("json");
+  database.init("json");
 
   // start server
   await server.start();

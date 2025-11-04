@@ -1,5 +1,5 @@
 import { v4 } from "uuid";
-import type { CollectionStore } from "../../db.js";
+import type { CollectionStore } from "../../database";
 import { jsonFile } from "./store-util.js";
 import type { Collection, NewCollection } from "../../interface/collection.js";
 import type { User } from "../../interface/user.js";

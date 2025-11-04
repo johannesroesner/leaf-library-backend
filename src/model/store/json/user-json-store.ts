@@ -1,5 +1,5 @@
 import { v4 } from "uuid";
-import type { UserStore } from "../../db.js";
+import type { UserStore } from "../../database";
 import { jsonFile } from "./store-util.js";
 import type { NewUser, User } from "../../interface/user.js";
 
@@ -12,6 +12,12 @@ export const userJsonStore: UserStore = {
   async getById(userId: User["_id"]): Promise<User | null> {
     await jsonFile.read();
     const foundUser = jsonFile.data.users.find((u: User) => u._id === userId);
+    return foundUser ?? null;
+  },
+
+  async getByEmail(userEmail: User["email"]): Promise<User | null> {
+    await jsonFile.read();
+    const foundUser = jsonFile.data.users.find((u: User) => u.email === userEmail);
     return foundUser ?? null;
   },
 
