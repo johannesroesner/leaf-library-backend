@@ -35,3 +35,6 @@ node_modules/
 .env.test
 .env.production
 
+# test coverage
+coverage/
+

@@ -1,3 +1,4 @@
+import Cookie from "@hapi/cookie";
 import Hapi from "@hapi/hapi";
 import Inert from "@hapi/inert";
 import Vision from "@hapi/vision";
@@ -7,6 +8,7 @@ import * as path from "node:path";
 import Handlebars from "handlebars";
 import { webRoutes } from "./web-routes.js";
 import { dataBase } from "./model/db.js";
+import { accountController } from "./controller/account-controller";
 
 // check if .env file is present
 const result: any = dotenv.config();
@@ -26,7 +28,19 @@ const init = async () => {
   });
 
   // register plugins
-  await server.register([Vision, Inert]);
+  await server.register([Vision, Inert, Cookie]);
+
+  // define default auth and cookie
+  server.auth.strategy("session", "cookie", {
+    cookie: {
+      name: process.env.COOCKIE_NAME,
+      password: process.env.COOCKIE_PASSWORD,
+      isSecure: false,
+    },
+    redirectTo: "/",
+    validate: accountController.validate,
+  });
+  server.auth.default("session");
 
   // register template engine
   server.views({
