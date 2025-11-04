@@ -1,5 +1,4 @@
 # Leaf Library - Backend
-[![Coverage](https://coveralls.io/repos/github/johannesroesner/leaf-library-backend/badge.svg?branch=main)](https://coveralls.io/github/johannesroesner/leaf-library-backend?branch=main)
 
 I really like houseplant and botanical gardens, therefore *Leaf Library* is my take on a digital botanical garden, and
 it
