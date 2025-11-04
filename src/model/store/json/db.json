@@ -2,10 +2,10 @@
   "users": [
     {
       "email": "sheldon.cooper@caltechmail.com",
-      "firstName": "Sheldon",
+      "firstName": "new name",
       "secondName": "Cooper",
       "password": "Bazinga123!",
-      "_id": "63ed82a8-eefd-492e-b374-c0350aee11e4",
+      "_id": "30225395-d4e6-4127-8400-f8034139e662",
       "aboutMe": null,
       "imageUrl": null
     }

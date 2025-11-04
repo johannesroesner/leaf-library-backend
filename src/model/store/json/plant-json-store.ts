@@ -12,7 +12,7 @@ export const plantJsonStore: PlantStore = {
 
   async getById(plantId: Plant["_id"]): Promise<Plant | null> {
     await jsonFile.read();
-    const foundPlant = jsonFile.data.users.filter((p: Plant) => p._id === plantId);
+    const foundPlant = jsonFile.data.users.find((p: Plant) => p._id === plantId);
     return foundPlant ?? null;
   },
 

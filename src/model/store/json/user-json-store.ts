@@ -11,7 +11,7 @@ export const userJsonStore: UserStore = {
 
   async getById(userId: User["_id"]): Promise<User | null> {
     await jsonFile.read();
-    const foundUser = jsonFile.data.users.filter((u: User) => u._id === userId);
+    const foundUser = jsonFile.data.users.find((u: User) => u._id === userId);
     return foundUser ?? null;
   },
 

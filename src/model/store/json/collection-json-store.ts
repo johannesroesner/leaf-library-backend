@@ -13,7 +13,7 @@ export const collectionJsonStore: CollectionStore = {
 
   async getById(collectionId: Collection["_id"]): Promise<Collection | null> {
     await jsonFile.read();
-    const foundCollection = jsonFile.data.collections.filter((c: Collection) => c._id === collectionId);
+    const foundCollection = jsonFile.data.collections.find((c: Collection) => c._id === collectionId);
     return foundCollection ?? null;
   },
 
