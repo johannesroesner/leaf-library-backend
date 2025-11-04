@@ -5,9 +5,10 @@
       "firstName": "new name",
       "secondName": "Cooper",
       "password": "Bazinga123!",
-      "_id": "30225395-d4e6-4127-8400-f8034139e662",
+      "_id": "1e4082e6-1e84-4334-bf62-71339d2a53f8",
       "aboutMe": null,
       "imageUrl": null
     }
-  ]
+  ],
+  "plants": []
 }

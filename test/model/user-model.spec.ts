@@ -32,7 +32,7 @@ suite("user model tests", () => {
   test("get all - success", async () => {
     for (let i = 0; i < newTestUsers.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      const createdUser = await dataBase.userStore!.create(newTestUsers[0]);
+      const createdUser = await dataBase.userStore!.create(newTestUsers[i]);
       assert.isNotNull(createdUser);
     }
     const foundUsers = await dataBase.userStore!.getAll();

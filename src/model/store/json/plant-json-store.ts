@@ -7,18 +7,31 @@ import type { User } from "../../interface/user.js";
 export const plantJsonStore: PlantStore = {
   async getAll(): Promise<Plant[]> {
     await jsonFile.read();
-    return jsonFile.data.plants;
+
+    return jsonFile.data.plants.map((p: Plant) => ({
+      ...p,
+      date: new Date(p.date),
+    }));
   },
 
   async getById(plantId: Plant["_id"]): Promise<Plant | null> {
     await jsonFile.read();
-    const foundPlant = jsonFile.data.users.find((p: Plant) => p._id === plantId);
-    return foundPlant ?? null;
-  },
 
+    const foundPlant = jsonFile.data.plants.find((p: Plant) => p._id === plantId);
+    if (!foundPlant) return null;
+
+    return {
+      ...foundPlant,
+      date: new Date(foundPlant.date),
+    };
+  },
   async getAllForUser(userId: User["_id"]): Promise<Plant[]> {
     await jsonFile.read();
-    return jsonFile.data.plants.filter((p: Plant) => p.userId === userId);
+    const foundPlants = jsonFile.data.plants.filter((p: Plant) => p.userId === userId);
+    return foundPlants.map((p: Plant) => ({
+      ...p,
+      date: new Date(p.date),
+    }));
   },
 
   async createForUser(userId: User["_id"], newPlant: NewPlant): Promise<Plant> {
