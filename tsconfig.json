@@ -1,30 +1,21 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Node 20",
   "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "./dist",
-    // enviroment settings
-    "module": "nodenext",
-    "target": "esnext",
-    // For nodejs:
     "lib": [
-      "esnext"
+      "es2022"
     ],
-    "types": [
-      "node"
-    ],
-    // other outputs
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-    // stricter typechecking options
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-    // recommended options
-    "strict": true,
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
+    "module": "es2022",
+    "target": "es2022",
+    "strict": false,
+    "esModuleInterop": true,
     "skipLibCheck": true,
-  }
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "exclude": [
+    "test"
+  ],
 }

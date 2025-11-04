@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "email": "sheldon.cooper@caltechmail.com",
+      "firstName": "Sheldon",
+      "secondName": "Cooper",
+      "password": "Bazinga123!",
+      "_id": "227c7699-97bf-445b-8e64-61ca628f5a0b",
+      "aboutMe": null,
+      "imageUrl": null
+    }
+  ],
+  "plants": [],
+  "collections": [
+    {
+      "name": "Summer Garden",
+      "description": "A collection of my favorite summer plants",
+      "imageUrl": "https://example.com/summer-garden.jpg",
+      "_id": "23a7707e-20a2-4a81-853e-3f60e992f433",
+      "userId": "4d3bb5c7-a3c5-4eef-b7f5-53403bb23849",
+      "plantIds": [
+        "7781d563-b5fb-4c09-99f1-c3b13dc20002",
+        "857ed3ec-7893-40af-a060-ada4db6d2a1b",
+        "2155bf6d-6bbb-4c96-816e-5495f5e43b73",
+        "64053419-32d5-4788-9640-0fa7346f6a36"
+      ]
+    }
+  ]
+}
