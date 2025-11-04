@@ -1,5 +1,6 @@
 import type { NewUser } from "../src/model/interface/user.js";
 import { NewPlant } from "../src/model/interface/plant";
+import { NewCollection } from "../src/model/interface/collection";
 
 export const newTestUsers: NewUser[] = [
   {
@@ -68,5 +69,28 @@ export const newTestPlants: NewPlant[] = [
     note: "Climbs walls and fences",
     latitude: 40.7128,
     longitude: -74.006,
+  },
+];
+
+export const newTestCollections: NewCollection[] = [
+  {
+    name: "Summer Garden",
+    description: "A collection of my favorite summer plants",
+    imageUrl: "https://example.com/summer-garden.jpg",
+  },
+  {
+    name: "Indoor Greens",
+    description: "Plants that thrive indoors",
+    imageUrl: null,
+  },
+  {
+    name: "Medicinal Herbs",
+    description: "Herbs for teas and remedies",
+    imageUrl: "https://example.com/herbs.jpg",
+  },
+  {
+    name: "Succulent Paradise",
+    description: null,
+    imageUrl: "https://example.com/succulents.jpg",
   },
 ];

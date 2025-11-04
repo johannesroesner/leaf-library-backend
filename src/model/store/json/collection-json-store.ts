@@ -61,10 +61,26 @@ export const collectionJsonStore: CollectionStore = {
 
   async addPlantToCollection(collectionId: Collection["_id"], plantId: Plant["_id"]): Promise<Collection | null> {
     await jsonFile.read();
+    const collectionIndex = jsonFile.data.collections.findIndex((c: Collection) => c._id === collectionId);
+    if (collectionIndex === -1) return null;
+    const plantIndex = jsonFile.data.plants.findIndex((p: Plant) => p._id === plantId);
+    if (plantIndex === -1) return null;
+    jsonFile.data.collections[collectionIndex].plantIds.push(plantId);
+    await jsonFile.write();
+    return jsonFile.data.collections[collectionIndex];
+  },
+
+  async getAllPlantsForCollection(collectionId: Collection["_id"]): Promise<Plant[]> {
+    await jsonFile.read();
     const index = jsonFile.data.collections.findIndex((c: Collection) => c._id === collectionId);
     if (index === -1) return null;
-    jsonFile.data.collections[index].plantIds.push(plantId);
-    await jsonFile.write();
-    return jsonFile.data.collections[index];
+    const ids = jsonFile.data.collections[index].plantIds;
+    let plants: Plant[] = [];
+    ids.forEach((url: String) => {
+      const foundPlant = jsonFile.data.plants.find((p: Plant) => p._id === url);
+      plants = [...plants, foundPlant];
+    });
+
+    return plants;
   },
 };

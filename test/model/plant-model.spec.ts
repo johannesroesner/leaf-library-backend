@@ -10,6 +10,7 @@ suite("plant model tests", () => {
 
   setup(async () => {
     dataBase.init("json");
+    await dataBase.userStore!.deleteAll();
     await dataBase.plantStore!.deleteAll();
 
     createdUser = await dataBase.userStore!.create(newTestUsers[0]);
@@ -43,7 +44,7 @@ suite("plant model tests", () => {
       assert.isNotNull(createdPlant);
     }
     const foundPlants = await dataBase.plantStore!.getAll();
-    assert.equal(newTestUsers.length, foundPlants.length);
+    assert.equal(newTestPlants.length, foundPlants.length);
   });
 
   test("delete all - success", async () => {
@@ -53,7 +54,7 @@ suite("plant model tests", () => {
       assert.isNotNull(createdPlant);
     }
     let foundPlants = await dataBase.plantStore!.getAll();
-    assert.equal(newTestUsers.length, foundPlants.length);
+    assert.equal(newTestPlants.length, foundPlants.length);
 
     await dataBase.plantStore!.deleteAll();
     foundPlants = await dataBase.plantStore!.getAll();
@@ -74,11 +75,11 @@ suite("plant model tests", () => {
   });
 
   test("delete by id - fail", async () => {
-    const deletedUser = await dataBase.userStore!.deleteById("bad id");
-    assert.isNull(deletedUser);
+    const deletedPlant = await dataBase.plantStore!.deleteById("bad id");
+    assert.isNull(deletedPlant);
   });
 
-  test("update by id - success", async () => {
+  test("update - success", async () => {
     const createdPlant = await dataBase.plantStore!.createForUser(createdUser._id, newTestPlants[0]);
     assert.isNotNull(createdPlant);
 
@@ -93,6 +94,16 @@ suite("plant model tests", () => {
     assert.equal(foundPlant.commonName, "new name");
   });
 
+  test("update - fail", async () => {
+    const createdPlant = await dataBase.plantStore!.createForUser(createdUser._id, newTestPlants[0]);
+    assert.isNotNull(createdPlant);
+
+    createdPlant._id = "bad id";
+
+    const updatedPlant = await dataBase.plantStore!.update(createdPlant);
+    assert.isNull(updatedPlant);
+  });
+
   test("get all for user - success", async () => {
     for (let i = 0; i < newTestPlants.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
@@ -100,7 +111,7 @@ suite("plant model tests", () => {
       assert.isNotNull(createdPlant);
     }
     const foundPlants = await dataBase.plantStore!.getAllForUser(createdUser._id);
-    assert.equal(newTestUsers.length, foundPlants.length);
+    assert.equal(newTestPlants.length, foundPlants.length);
   });
 
   test("get all for user - fail", async () => {

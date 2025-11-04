@@ -71,7 +71,7 @@ suite("user model tests", () => {
     assert.isNull(deletedUser);
   });
 
-  test("update by id - success", async () => {
+  test("update - success", async () => {
     const createdUser = await dataBase.userStore!.create(newTestUsers[0]);
     assert.isNotNull(createdUser);
 
@@ -84,5 +84,15 @@ suite("user model tests", () => {
     assert.isNotNull(foundUser);
 
     assert.equal(foundUser.firstName, "new name");
+  });
+
+  test("update - fail", async () => {
+    const createdUser = await dataBase.userStore!.create(newTestUsers[0]);
+    assert.isNotNull(createdUser);
+
+    createdUser._id = "bad id";
+
+    const updatedUser = await dataBase.userStore!.update(createdUser);
+    assert.isNull(updatedUser);
   });
 });
