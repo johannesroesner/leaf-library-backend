@@ -5,11 +5,83 @@
       "firstName": "Sheldon",
       "secondName": "Cooper",
       "password": "Bazinga123!",
-      "_id": "3d9ae537-997e-4bf8-9e3f-bedd44cbffb7",
+      "_id": "60e0acf1-ba74-4ff3-bf35-eecea3a7064c",
       "aboutMe": null,
       "imageUrl": null
     }
   ],
-  "plants": [],
-  "collections": []
+  "plants": [
+    {
+      "commonName": "Oak Tree",
+      "scientificName": "Quercus robur",
+      "type": "Tree",
+      "biome": "Forest",
+      "imageUrls": [
+        "https://example.com/oak.jpg"
+      ],
+      "note": "Can live for hundreds of years",
+      "latitude": 51.5074,
+      "longitude": -0.1278,
+      "_id": "ae9c472a-851b-4b14-8f68-110c6d2c8582",
+      "userId": "60e0acf1-ba74-4ff3-bf35-eecea3a7064c",
+      "date": "2025-11-05T19:21:59.956Z"
+    },
+    {
+      "commonName": "Water Lily",
+      "scientificName": "Nymphaea alba",
+      "type": "Aquatic Plant",
+      "biome": "Pond",
+      "imageUrls": [
+        "https://example.com/waterlily.jpg"
+      ],
+      "note": "Floats on water, blooms in summer",
+      "latitude": 45.4215,
+      "longitude": -75.6972,
+      "_id": "891669fb-a6ac-4ccd-ad82-7b32d5c03803",
+      "userId": "60e0acf1-ba74-4ff3-bf35-eecea3a7064c",
+      "date": "2025-11-05T19:21:59.957Z"
+    },
+    {
+      "commonName": "Ivy",
+      "scientificName": "Hedera helix",
+      "type": "Climber",
+      "biome": "Urban",
+      "imageUrls": [
+        "https://example.com/ivy.jpg"
+      ],
+      "note": "Climbs walls and fences",
+      "latitude": 40.7128,
+      "longitude": -74.006,
+      "_id": "178af4ed-5647-4705-b36a-28c968484437",
+      "userId": "60e0acf1-ba74-4ff3-bf35-eecea3a7064c",
+      "date": "2025-11-05T19:21:59.958Z"
+    },
+    {
+      "commonName": "test",
+      "scientificName": "test",
+      "type": "Grass",
+      "biome": "Desert",
+      "note": "test",
+      "latitude": 23,
+      "longitude": 23,
+      "_id": "b8053bd4-073d-4c03-9128-e3864c7976e7",
+      "userId": "60e0acf1-ba74-4ff3-bf35-eecea3a7064c",
+      "date": "2025-11-05T19:22:43.794Z"
+    }
+  ],
+  "collections": [
+    {
+      "name": "Summer Garden",
+      "description": "A collection of my favorite summer plants",
+      "imageUrl": "https://example.com/summer-garden.jpg",
+      "_id": "7e47a07d-c00d-4f79-a74f-8a6922f12198",
+      "userId": "60e0acf1-ba74-4ff3-bf35-eecea3a7064c",
+      "plantIds": [
+        "ae9c472a-851b-4b14-8f68-110c6d2c8582",
+        "178af4ed-5647-4705-b36a-28c968484437",
+        "891669fb-a6ac-4ccd-ad82-7b32d5c03803",
+        "b8053bd4-073d-4c03-9128-e3864c7976e7"
+      ]
+    }
+  ]
 }

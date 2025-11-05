@@ -166,4 +166,20 @@ suite("collection model tests", () => {
     const foundPlants = await database.collectionStore!.getAllPlantsForCollection(createdCollection._id);
     assert.equal(createdPlants.length, foundPlants.length);
   });
+
+  test("add one plant to collection, delete the plant - success", async () => {
+    const createdCollection = await database.collectionStore!.createForUser(createdUser._id, newTestCollections[0]);
+    assert.isNotNull(createdCollection);
+
+    const createdCollectionWithPlant = await database.collectionStore!.addPlantToCollection(createdCollection._id, createdPlants[0]._id);
+    assert.isNotNull(createdCollectionWithPlant);
+
+    assert.equal(createdCollectionWithPlant.plantIds[0], createdPlants[0]._id);
+
+    await database.plantStore!.deleteById(createdPlants[0]._id);
+
+    const foundCollection = await database.collectionStore!.getById(createdCollection._id);
+
+    assert.equal(foundCollection.plantIds.length, 0);
+  });
 });

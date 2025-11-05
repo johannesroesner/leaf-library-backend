@@ -19,7 +19,7 @@ export const NewUserSpec = UserCredentialSpec.keys({
 
 export const UserSpec = NewUserSpec.keys({
   aboutMe: Joi.string().example("hey im sheldon cooper"),
-  imageUrl: Joi.string().example("www.example.com/sheldon-image"),
+  imageUrl: Joi.string().example("www.example.com/sheldon-image.jpg"),
 }).label("UserDetails");
 
 export const UserSpecPlus = UserSpec.keys({
@@ -56,3 +56,20 @@ export const PlantSpec = NewPlantSpec.keys({
 }).label("Plant");
 
 export const PlantArray = Joi.array().items(PlantSpec).label("PlantArray");
+
+// collection schema
+export const NewCollectionSpec = Joi.object()
+  .keys({
+    name: Joi.string().example("Summer Flowers").required(),
+    description: Joi.string().example("My Summer Flowers Collection").required(),
+  })
+  .label("NewCollection");
+
+export const CollectionSpec = NewCollectionSpec.keys({
+  _id: IdSpec,
+  imageUrl: Joi.string().example("www.example.com/summerflower-image.jpg"),
+  userId: IdSpec,
+  plantIds: Joi.array().items(IdSpec).label("Plant IDs"),
+}).label("Plant");
+
+export const CollectionArray = Joi.array().items(CollectionSpec).label("CollectionArray");

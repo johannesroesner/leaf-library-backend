@@ -1,0 +1,17 @@
+{{#each collections}}
+  <div class="box box-link-hover-shadow">
+    <h2 class="title">
+      {{name}}
+    </h2>
+    <a href="/collection/{{_id}}" class="button">
+      <span class="icon is-small">
+        <i class="fa-solid fa-folder-open"></i>
+      </span>
+    </a>
+    <a href="/collection/{{_id}}/delete" class="button">
+      <span class="icon is-small">
+        <i class="fa-solid fa-trash"></i>
+       </span>
+    </a>
+  </div>
+{{/each}}
