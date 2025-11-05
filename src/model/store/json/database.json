@@ -5,7 +5,7 @@
       "firstName": "Sheldon",
       "secondName": "Cooper",
       "password": "Bazinga123!",
-      "_id": "b650d7d0-f974-4af9-b15e-0ccc098088bb",
+      "_id": "da8ece06-0100-47f0-98be-fc3120d37c96",
       "aboutMe": null,
       "imageUrl": null
     }
@@ -16,13 +16,13 @@
       "name": "Summer Garden",
       "description": "A collection of my favorite summer plants",
       "imageUrl": "https://example.com/summer-garden.jpg",
-      "_id": "830a2646-d0e8-46bf-bc36-8e3c9d96a149",
-      "userId": "ff83b935-6050-4e5a-9abb-a4ca95b546ee",
+      "_id": "ec5fc5b6-8a5b-4ae2-b78d-2a0ad46112cd",
+      "userId": "4323d84d-651a-4d4b-b976-c7df0805b371",
       "plantIds": [
-        "6aa82ca4-c064-4934-b15e-ef0394675fb0",
-        "8db19eec-3307-4f33-8473-0a75051dd126",
-        "f0ef6cc8-266e-4d66-bd7b-adf426f2c7c9",
-        "7bd50401-1796-43eb-803a-246c98a0b643"
+        "b6b93de7-a315-4279-b7d8-10bee313bc8e",
+        "d07ac083-33a3-4c65-8ad6-3d00ecce5ebd",
+        "f4c6014e-bc15-48b2-a4cc-9d8e11022ed3",
+        "c7516fa0-e08c-4639-b6b3-5ee8931561bd"
       ]
     }
   ]
