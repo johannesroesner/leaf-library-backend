@@ -8,6 +8,8 @@ suite("user model tests", () => {
   setup(async () => {
     database.init("json");
     await database.userStore!.deleteAll();
+    await database.plantStore!.deleteAll();
+    await database.collectionStore!.deleteAll();
   });
 
   test("create - success", async () => {

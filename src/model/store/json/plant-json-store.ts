@@ -48,6 +48,8 @@ export const plantJsonStore: PlantStore = {
     if (index === -1) {
       return null;
     }
+    plant.userId = jsonFile.data.plants[index].userId;
+    plant.imageUrls = jsonFile.data.plants[index].imageUrls;
     jsonFile.data.plants[index] = plant;
     await jsonFile.write();
     return plant;

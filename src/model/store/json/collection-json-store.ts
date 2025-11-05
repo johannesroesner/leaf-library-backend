@@ -36,6 +36,9 @@ export const collectionJsonStore: CollectionStore = {
     if (index === -1) {
       return null;
     }
+    collection.plantIds = jsonFile.data.collections[index].plantIds;
+    collection.userId = jsonFile.data.collections[index].userId;
+    collection.imageUrl = jsonFile.data.collections[index].imageUrl;
     jsonFile.data.collections[index] = collection;
     await jsonFile.write();
     return collection;

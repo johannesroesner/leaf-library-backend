@@ -1,8 +1,8 @@
-{{#if errors}}
+{{#if error}}
   <div class="box content">
     <p> There was a problem... </p>
     <ul>
-      {{#each errors}}
+      {{#each error.details}}
         <li>{{message}}</li>
       {{/each}}
     </ul>

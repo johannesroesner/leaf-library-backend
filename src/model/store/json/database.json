@@ -5,25 +5,11 @@
       "firstName": "Sheldon",
       "secondName": "Cooper",
       "password": "Bazinga123!",
-      "_id": "da8ece06-0100-47f0-98be-fc3120d37c96",
+      "_id": "3d9ae537-997e-4bf8-9e3f-bedd44cbffb7",
       "aboutMe": null,
       "imageUrl": null
     }
   ],
   "plants": [],
-  "collections": [
-    {
-      "name": "Summer Garden",
-      "description": "A collection of my favorite summer plants",
-      "imageUrl": "https://example.com/summer-garden.jpg",
-      "_id": "ec5fc5b6-8a5b-4ae2-b78d-2a0ad46112cd",
-      "userId": "4323d84d-651a-4d4b-b976-c7df0805b371",
-      "plantIds": [
-        "b6b93de7-a315-4279-b7d8-10bee313bc8e",
-        "d07ac083-33a3-4c65-8ad6-3d00ecce5ebd",
-        "f4c6014e-bc15-48b2-a4cc-9d8e11022ed3",
-        "c7516fa0-e08c-4639-b6b3-5ee8931561bd"
-      ]
-    }
-  ]
+  "collections": []
 }

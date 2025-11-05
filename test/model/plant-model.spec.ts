@@ -12,6 +12,7 @@ suite("plant model tests", () => {
     database.init("json");
     await database.userStore!.deleteAll();
     await database.plantStore!.deleteAll();
+    await database.collectionStore!.deleteAll();
 
     createdUser = await database.userStore!.create(newTestUsers[0]);
     assert.isNotNull(createdUser);

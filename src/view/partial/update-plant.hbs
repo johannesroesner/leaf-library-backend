@@ -1,0 +1,75 @@
+<div class="box">
+  <p class="title"> Update Plant </p>
+  <form action="/plant/{{plant._id}}/update" method="POST">
+
+    <div class="field">
+      <label class="label">Common Name</label>
+      <input class="input" type="text" name="commonName" placeholder="Enter common name" value="{{plant.commonName}}" required />
+    </div>
+
+    <div class="field">
+      <label class="label">Scientific Name</label>
+      <input class="input" type="text" name="scientificName" placeholder="Enter scientific name" value="{{plant.scientificName}}" required />
+    </div>
+
+    <div class="field">
+      <label class="label">Type</label>
+      <div class="control">
+        <div class="select">
+          <select name="type" required>
+            <option value="">Select type</option>
+            <option value="Tree" {{#ifEquals plant.type "Tree"}}selected{{/ifEquals}}>Tree</option>
+            <option value="Flower" {{#ifEquals plant.type "Flower"}}selected{{/ifEquals}}>Flower</option>
+            <option value="Fern" {{#ifEquals plant.type "Fern"}}selected{{/ifEquals}}>Fern</option>
+            <option value="Moss" {{#ifEquals plant.type "Moss"}}selected{{/ifEquals}}>Moss</option>
+            <option value="Grass" {{#ifEquals plant.type "Grass"}}selected{{/ifEquals}}>Grass</option>
+            <option value="Aquatic Plant" {{#ifEquals plant.type "Aquatic Plant"}}selected{{/ifEquals}}>Aquatic Plant</option>
+            <option value="Climber" {{#ifEquals plant.type "Climber"}}selected{{/ifEquals}}>Climber</option>
+            <option value="Other" {{#ifEquals plant.type "Other"}}selected{{/ifEquals}}>Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Biome</label>
+      <div class="control">
+        <div class="select">
+          <select name="biome" required>
+            <option value="">Select biome</option>
+            <option value="Urban" {{#ifEquals plant.biome "Urban"}}selected{{/ifEquals}}>Urban</option>
+            <option value="Meadow" {{#ifEquals plant.biome "Meadow"}}selected{{/ifEquals}}>Meadow</option>
+            <option value="Forest" {{#ifEquals plant.biome "Forest"}}selected{{/ifEquals}}>Forest</option>
+            <option value="Pond" {{#ifEquals plant.biome "Pond"}}selected{{/ifEquals}}>Pond</option>
+            <option value="River" {{#ifEquals plant.biome "River"}}selected{{/ifEquals}}>River</option>
+            <option value="Sea" {{#ifEquals plant.biome "Sea"}}selected{{/ifEquals}}>Sea</option>
+            <option value="Desert" {{#ifEquals plant.biome "Desert"}}selected{{/ifEquals}}>Desert</option>
+            <option value="Other" {{#ifEquals plant.biome "Other"}}selected{{/ifEquals}}>Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Note (optional)</label>
+      <textarea class="textarea" name="note" placeholder="Add a note about this plant">{{plant.note}}</textarea>
+    </div>
+
+    <div class="field">
+      <label class="label">Latitude</label>
+      <input class="input" type="number" name="latitude" placeholder="Enter latitude" step="0.0000001" min="-90" max="90" value="{{plant.latitude}}" required />
+    </div>
+
+    <div class="field">
+      <label class="label">Longitude</label>
+      <input class="input" type="number" name="longitude" placeholder="Enter longitude" step="0.0000001" min="-180" max="180" value="{{plant.longitude}}" required />
+    </div>
+
+
+    <label class="label">Date: {{plant.date}}</label>
+
+    <div class="field">
+      <button class="button is-primary" type="submit">Update Plant</button>
+    </div>
+  </form>
+</div>
