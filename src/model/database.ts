@@ -12,6 +12,8 @@ export interface UserStore {
 
   getById(userId: User["_id"]): Promise<User | null>;
 
+  getByEmail(userEmail: User["email"]): Promise<User | null>;
+
   create(newUser: NewUser): Promise<User>;
 
   update(user: User): Promise<User | null>;
@@ -57,7 +59,7 @@ export interface CollectionStore {
   getAllPlantsForCollection(collectionId: Collection["_id"]): Promise<Plant[]>;
 }
 
-interface DataBase {
+interface Database {
   userStore: UserStore | null;
   plantStore: PlantStore | null;
   collectionStore: CollectionStore | null;
@@ -65,7 +67,7 @@ interface DataBase {
   init(storeType: StoreType): void;
 }
 
-export const dataBase: DataBase = {
+export const database: Database = {
   userStore: null,
   plantStore: null,
   collectionStore: null,

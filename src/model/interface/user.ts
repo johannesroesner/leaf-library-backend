@@ -9,3 +9,4 @@ export interface User {
 }
 
 export type NewUser = Omit<User, "_id" | "aboutMe" | "imageUrl">;
+export type UserCredential = Omit<User, "_id" | "aboutMe" | "imageUrl" | "firstName" | "secondName">;

@@ -1,7 +1,7 @@
 import { v4 } from "uuid";
 import type { NewPlant, Plant } from "../../interface/plant.js";
 import { jsonFile } from "./store-util.js";
-import type { PlantStore } from "../../db.js";
+import type { PlantStore } from "../../database";
 import type { User } from "../../interface/user.js";
 
 export const plantJsonStore: PlantStore = {
