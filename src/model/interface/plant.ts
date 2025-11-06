@@ -1,8 +1,12 @@
 import type { User } from "./user.js";
 
-export type PlantType = "Tree" | "Flower" | "Fern" | "Moss" | "Grass" | "Aquatic Plant" | "Climber" | "Other";
+export const PlantTypeArray = ["Tree", "Flower", "Fern", "Moss", "Grass", "Aquatic Plant", "Climber", "Other"] as const;
 
-export type Biome = "Urban" | "Meadow" | "Forest" | "Pond" | "River" | "Sea" | "Desert" | "Other";
+export type PlantType = (typeof PlantTypeArray)[number];
+
+export const BiomeArray = ["Urban", "Meadow", "Forest", "Pond", "River", "Sea", "Desert", "Other"] as const;
+
+export type Biome = (typeof BiomeArray)[number];
 
 export interface Plant {
   _id: String;

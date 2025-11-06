@@ -1,4 +1,4 @@
-import Hapi, { Request, ResponseToolkit, RouteOptions } from "@hapi/hapi";
+import { Request, ResponseToolkit, RouteOptions } from "@hapi/hapi";
 import Joi from "joi";
 import { NewUserSpec, UserCredentialSpec } from "../model/joi-schema.js";
 import { database } from "../model/database.js";
@@ -19,12 +19,11 @@ export const accountController: Record<string, RouteOptions> = {
     auth: false,
     validate: {
       payload: NewUserSpec,
-      options: { abortEarly: false },
-      failAction: (request: Request, responseToolkit: ResponseToolkit, err: Joi.ValidationError) =>
+      failAction: (request: Request, responseToolkit: ResponseToolkit, error: Joi.ValidationError) =>
         responseToolkit
           .view("signup-view", {
             title: "Leaf Library - Sign up error",
-            errors: err.details,
+            errorDetail: error.details,
           })
           .takeover()
           .code(400),
@@ -45,7 +44,6 @@ export const accountController: Record<string, RouteOptions> = {
     auth: false,
     validate: {
       payload: UserCredentialSpec,
-      options: { abortEarly: false },
       failAction: function (request: Request, responseToolkit: ResponseToolkit, error: Joi.ValidationError) {
         return responseToolkit.view("login-view", { title: "Login error", errors: error.details }).takeover().code(400);
       },
@@ -57,7 +55,7 @@ export const accountController: Record<string, RouteOptions> = {
         return responseToolkit.redirect("/");
       }
       request.cookieAuth.set({ id: user._id });
-      return responseToolkit.redirect("/dashboard");
+      return responseToolkit.redirect("/garden");
     },
   },
 
@@ -74,10 +72,15 @@ interface Session {
   id: string;
 }
 
+export interface Credential {
+  id: string;
+  role: string; // admin maybe later
+}
+
 export const validate = async (request: Request, session: Session) => {
   const user = await database.userStore.getById(session.id);
   if (!user) {
     return { isValid: false };
   }
-  return { isValid: true, credentials: user };
+  return { isValid: true, credentials: { id: user._id, role: "" } };
 };

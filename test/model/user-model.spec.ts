@@ -8,6 +8,8 @@ suite("user model tests", () => {
   setup(async () => {
     database.init("json");
     await database.userStore!.deleteAll();
+    await database.plantStore!.deleteAll();
+    await database.collectionStore!.deleteAll();
   });
 
   test("create - success", async () => {
@@ -24,7 +26,7 @@ suite("user model tests", () => {
     assert.deepEqual(createdUser, foundUser);
   });
 
-  test("get by id  - fail", async () => {
+  test("get by id  - fail, bad userId", async () => {
     const foundUser = await database.userStore!.getById("bad id");
     assert.isNull(foundUser);
   });
@@ -37,7 +39,7 @@ suite("user model tests", () => {
     assert.deepEqual(createdUser, foundUser);
   });
 
-  test("get by email  - fail", async () => {
+  test("get by email  - fail, bad userEmail", async () => {
     const foundUser = await database.userStore!.getByEmail("bad email");
     assert.isNull(foundUser);
   });
@@ -79,7 +81,7 @@ suite("user model tests", () => {
     assert.isNull(foundUser);
   });
 
-  test("delete by id - fail", async () => {
+  test("delete by id - fail, bad userId", async () => {
     const deletedUser = await database.userStore!.deleteById("bad id");
     assert.isNull(deletedUser);
   });
@@ -99,7 +101,7 @@ suite("user model tests", () => {
     assert.equal(foundUser.firstName, "new name");
   });
 
-  test("update - fail", async () => {
+  test("update - fail, bad userId", async () => {
     const createdUser = await database.userStore!.create(newTestUsers[0]);
     assert.isNotNull(createdUser);
 

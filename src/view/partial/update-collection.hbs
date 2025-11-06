@@ -1,0 +1,19 @@
+<div class="box">
+  <p class="title">Update Collection</p>
+  <form action="/collection/{{collection._id}}/update" method="POST">
+
+    <div class="field">
+      <label class="label">Name</label>
+      <input class="input" type="text" name="name" placeholder="Enter name" value="{{collection.name}}" required />
+    </div>
+
+    <div class="field">
+      <label class="label">Description</label>
+      <input class="input" type="text" name="description" placeholder="Enter description" value="{{collection.description}}" required />
+    </div>
+
+    <div class="field">
+      <button class="button is-primary" type="submit">Update Collection</button>
+    </div>
+  </form>
+</div>

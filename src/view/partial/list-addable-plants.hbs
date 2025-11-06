@@ -1,0 +1,15 @@
+<div class="box">
+<p class="title">Add Plants to Collection<p>
+  {{#each addablePlants}}
+    <div class="box box-link-hover-shadow">
+      <h2 class="title">
+          {{commonName}}
+      </h2>
+      <a href="/collection/{{../collection._id}}/addPlant/{{_id}}" class="button">
+        <span class="icon is-small">
+          <i class="fa-solid fa-plus"></i>
+        </span>
+      </a>
+    </div>
+  {{/each}}
+</div>

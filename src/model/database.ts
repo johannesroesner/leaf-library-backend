@@ -56,6 +56,8 @@ export interface CollectionStore {
 
   addPlantToCollection(collectionId: Collection["_id"], plantId: Plant["_id"]): Promise<Collection | null>;
 
+  deletePlantFromCollection(collectionId: Collection["_id"], plantId: Plant["_id"]): Promise<Collection | null>;
+
   getAllPlantsForCollection(collectionId: Collection["_id"]): Promise<Plant[]>;
 }
 
