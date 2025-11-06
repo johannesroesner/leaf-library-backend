@@ -5,7 +5,7 @@
       "firstName": "Sheldon",
       "secondName": "Cooper",
       "password": "Bazinga123!",
-      "_id": "0938f07b-56d4-445c-b671-2b7bdc2c87ec",
+        "_id": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa",
       "aboutMe": null,
       "imageUrl": null
     }
@@ -22,9 +22,9 @@
       "note": "Grows tall and loves sunlight",
       "latitude": 48.8566,
       "longitude": 2.3522,
-      "_id": "1dd609da-c593-4f36-adf9-af0356de9b8a",
-      "userId": "0938f07b-56d4-445c-b671-2b7bdc2c87ec",
-      "date": "2025-11-06T10:39:02.493Z"
+      "_id": "5fca7425-8c55-440e-b6e9-01037daaa100",
+      "userId": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa",
+      "date": "2025-11-06T12:29:33.789Z"
     },
     {
       "commonName": "Oak Tree",
@@ -37,9 +37,9 @@
       "note": "Can live for hundreds of years",
       "latitude": 51.5074,
       "longitude": -0.1278,
-      "_id": "d90b533b-ead3-485e-bf8d-7370be987f26",
-      "userId": "0938f07b-56d4-445c-b671-2b7bdc2c87ec",
-      "date": "2025-11-06T10:39:02.493Z"
+      "_id": "782b6020-7452-4d37-8976-de47d88a5d1a",
+      "userId": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa",
+      "date": "2025-11-06T12:29:33.790Z"
     },
     {
       "commonName": "Water Lily",
@@ -52,9 +52,9 @@
       "note": "Floats on water, blooms in summer",
       "latitude": 45.4215,
       "longitude": -75.6972,
-      "_id": "947ddfd8-c10b-4f27-8e47-7acd61b6abd3",
-      "userId": "0938f07b-56d4-445c-b671-2b7bdc2c87ec",
-      "date": "2025-11-06T10:39:02.493Z"
+      "_id": "35665f68-ea6a-4a36-818f-3c285b99888a",
+      "userId": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa",
+      "date": "2025-11-06T12:29:33.791Z"
     },
     {
       "commonName": "Ivy",
@@ -67,21 +67,10 @@
       "note": "Climbs walls and fences",
       "latitude": 40.7128,
       "longitude": -74.006,
-      "_id": "9debd5ee-89d8-4e8a-981d-a0e5d54d003b",
-      "userId": "0938f07b-56d4-445c-b671-2b7bdc2c87ec",
-      "date": "2025-11-06T10:39:02.493Z"
+      "_id": "d23de673-1080-4092-bd66-bb8f6de093e3",
+      "userId": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa",
+      "date": "2025-11-06T12:29:33.791Z"
     }
   ],
-  "collections": [
-    {
-      "name": "Test",
-      "description": "test",
-      "_id": "e54f94d0-c300-4597-b58d-644c5e919df5",
-      "userId": "0938f07b-56d4-445c-b671-2b7bdc2c87ec",
-      "plantIds": [
-        "1dd609da-c593-4f36-adf9-af0356de9b8a",
-        "9debd5ee-89d8-4e8a-981d-a0e5d54d003b"
-      ]
-    }
-  ]
+  "collections": []
 }

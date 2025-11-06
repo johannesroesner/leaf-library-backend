@@ -6,9 +6,11 @@ import dotenv from "dotenv";
 import { fileURLToPath } from "node:url";
 import * as path from "node:path";
 import Handlebars from "handlebars";
+import Joi from "joi";
 import { webRoutes } from "./web-routes.js";
 import { database } from "./model/database.js";
-import { accountController, validate } from "./controller/account-controller.js";
+import { validate } from "./controller/account-controller.js";
+import { apiRoutes } from "./api-routes.js";
 
 // check if .env file is present
 const result: any = dotenv.config();
@@ -24,7 +26,7 @@ const __dirname: string = path.dirname(__filename);
 const init = async () => {
   const server = Hapi.server({
     port: process.env.PORT,
-    host: process.env.HOSTe,
+    host: process.env.HOST,
   });
 
   // register plugins
@@ -55,14 +57,14 @@ const init = async () => {
     isCached: false,
   });
 
-  // register handelbars helper
-  // https://stackoverflow.com/questions/34252817/handlebarsjs-check-if-a-string-is-equal-to-a-value
-  Handlebars.registerHelper("ifEquals", function (arg1, arg2, options) {
-    return arg1 === arg2 ? options.fn(this) : options.inverse(this);
-  });
+  // set joi as validator
+  server.validator(Joi);
 
   // register server routes
   server.route(webRoutes);
+
+  // register api routes
+  server.route(apiRoutes);
 
   // dataBase init
   database.init("json");

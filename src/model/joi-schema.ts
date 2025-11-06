@@ -14,12 +14,12 @@ export const UserCredentialSpec = Joi.object()
 
 export const NewUserSpec = UserCredentialSpec.keys({
   firstName: Joi.string().example("Sheldon").required(),
-  lastName: Joi.string().example("Cooper").required(),
+  secondName: Joi.string().example("Cooper").required(),
 }).label("UserDetails");
 
 export const UserSpec = NewUserSpec.keys({
-  aboutMe: Joi.string().example("hey im sheldon cooper"),
-  imageUrl: Joi.string().example("www.example.com/sheldon-image.jpg"),
+  aboutMe: Joi.string().allow(null).example("hey im sheldon cooper"),
+  imageUrl: Joi.string().allow(null).example("www.example.com/sheldon-image.jpg"),
 }).label("UserDetails");
 
 export const UserSpecPlus = UserSpec.keys({
