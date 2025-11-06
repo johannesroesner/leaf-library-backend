@@ -10,7 +10,7 @@
     "lint": "eslint 'src/**/*.{ts,js}'",
     "build": "tsc && rm -rf dist/view && cp -r src/view dist/view",
     "start": "npm run build && node ./dist/server.js",
-    "test": "c8 mocha"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",

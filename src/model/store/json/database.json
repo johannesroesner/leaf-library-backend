@@ -5,64 +5,11 @@
       "firstName": "Sheldon",
       "secondName": "Cooper",
       "password": "Bazinga123!",
-      "_id": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa",
+      "_id": "f59b2bc4-ae44-4a4b-8ee1-87b96b82c152",
       "aboutMe": null,
       "imageUrl": null
     }
   ],
-  "plants": [
-    {
-      "commonName": "Water Lily",
-      "scientificName": "Nymphaea alba",
-      "type": "Aquatic Plant",
-      "biome": "Pond",
-      "note": "Floats on water, blooms in summerasdasdasdsada",
-      "latitude": 45.4215,
-      "longitude": -75.6972,
-      "_id": "35665f68-ea6a-4a36-818f-3c285b99888a",
-      "userId": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa",
-      "imageUrls": [
-        "https://example.com/waterlily.jpg"
-      ],
-      "date": "2025-11-06T12:29:33.791Z"
-    },
-    {
-      "commonName": "Ivy",
-      "scientificName": "Hedera helix",
-      "type": "Climber",
-      "biome": "Urban",
-      "imageUrls": [
-        "https://example.com/ivy.jpg"
-      ],
-      "note": "Climbs walls and fences",
-      "latitude": 40.7128,
-      "longitude": -74.006,
-      "_id": "d23de673-1080-4092-bd66-bb8f6de093e3",
-      "userId": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa",
-      "date": "2025-11-06T12:29:33.791Z"
-    },
-    {
-      "commonName": "asdfdsaf",
-      "scientificName": "sadfsadfasdf",
-      "type": "Flower",
-      "biome": "Urban",
-      "note": "asdfasdfsd",
-      "latitude": 1,
-      "longitude": 23,
-      "_id": "dca3c8c0-a9e3-47d9-8829-a6aa62a4d606",
-      "userId": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa",
-      "date": "2025-11-06T13:07:16.417Z"
-    }
-  ],
-  "collections": [
-    {
-      "name": "Test",
-      "description": "essafds",
-      "_id": "2f2e12ca-05c3-4d5f-9e66-a14aaf84b7ed",
-      "plantIds": [
-        "35665f68-ea6a-4a36-818f-3c285b99888a"
-      ],
-      "userId": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa"
-    }
-  ]
+  "plants": [],
+  "collections": []
 }

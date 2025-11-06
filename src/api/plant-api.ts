@@ -124,10 +124,7 @@ export const plantApi: Record<string, RouteOptions> = {
     auth: false,
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
-        const deletedPlants = await database.plantStore.deleteAll();
-        if (deletedPlants.length > 0) {
-          return Boom.serverUnavailable("database error");
-        }
+        await database.plantStore.deleteAll();
         return responseToolkit.response().code(204);
       } catch (error) {
         return Boom.serverUnavailable("database error");

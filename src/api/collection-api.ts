@@ -124,10 +124,7 @@ export const collectionApi: Record<string, RouteOptions> = {
     auth: false,
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
-        const deletedCollections = await database.collectionStore.deleteAll();
-        if (deletedCollections.length > 0) {
-          return Boom.serverUnavailable("database error");
-        }
+        await database.collectionStore.deleteAll();
         return responseToolkit.response().code(204);
       } catch (error) {
         return Boom.serverUnavailable("database error");

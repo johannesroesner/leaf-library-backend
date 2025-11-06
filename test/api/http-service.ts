@@ -1,8 +1,8 @@
 import axios from "axios";
 // @ts-ignore
 import { serviceUrl } from "../fixture.js";
-import { User } from "../../src/model/interface/user.js";
-import { Plant } from "../../src/model/interface/plant";
+import { NewUser, User } from "../../src/model/interface/user.js";
+import { Plant } from "../../src/model/interface/plant.js";
 import { Collection } from "../../src/model/interface/collection";
 
 export const httpService = {
@@ -24,7 +24,7 @@ export const httpService = {
     return response.data;
   },
 
-  async createUser(user: User) {
+  async createUser(user: NewUser) {
     const response = await axios.post(`${this.leafLibraryBackendUrl}/api/user/create`, user);
     return response.data;
   },

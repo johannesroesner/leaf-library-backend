@@ -87,7 +87,7 @@ export const userApi: Record<string, RouteOptions> = {
     auth: false,
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
-        const updatedUser = database.userStore.update(request.payload as User);
+        const updatedUser = await database.userStore.update(request.payload as User);
         if (!updatedUser) {
           return Boom.notFound("no user with this id");
         }
@@ -99,7 +99,7 @@ export const userApi: Record<string, RouteOptions> = {
     tags: ["api"],
     description: "update a user",
     notes: "returns the updated user",
-    validate: { payload: UserSpec, failAction: validationError },
+    validate: { payload: UserSpecPlus, failAction: validationError },
     response: { schema: UserSpecPlus, failAction: validationError },
   },
 
@@ -127,10 +127,7 @@ export const userApi: Record<string, RouteOptions> = {
     auth: false,
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
-        const deletedUsers = await database.userStore.deleteAll();
-        if (deletedUsers.length > 0) {
-          return Boom.serverUnavailable("database error");
-        }
+        await database.userStore.deleteAll();
         return responseToolkit.response().code(204);
       } catch (error) {
         return Boom.serverUnavailable("database error");
