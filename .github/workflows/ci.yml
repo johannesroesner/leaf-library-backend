@@ -10,6 +10,12 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
+    env:
+      PORT: 3000
+      HOST: localhost
+      COOKIE_NAME: ${{ secrets.COOKIE_NAME }}
+      COOKIE_PASSWORD: ${{ secrets.COOKIE_PASSWORD }}
+
     steps:
       - name: checkout repository
         uses: actions/checkout@v3
