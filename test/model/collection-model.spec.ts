@@ -43,7 +43,7 @@ suite("collection model tests", () => {
     assert.deepEqual(createdCollection, foundCollection);
   });
 
-  test("get by id  - fail", async () => {
+  test("get by id  - fail, bad collectionId", async () => {
     const foundCollection = await database.collectionStore!.getById("bad id");
     assert.isNull(foundCollection);
   });
@@ -85,7 +85,7 @@ suite("collection model tests", () => {
     assert.isNull(foundCollection);
   });
 
-  test("delete by id - fail", async () => {
+  test("delete by id - fail, bad collectionId", async () => {
     const deletedCollection = await database.collectionStore!.deleteById("bad id");
     assert.isNull(deletedCollection);
   });
@@ -105,7 +105,7 @@ suite("collection model tests", () => {
     assert.equal(foundCollection.name, "new name");
   });
 
-  test("update - fail", async () => {
+  test("update - fail, bad collectionId", async () => {
     const createdCollection = await database.collectionStore!.createForUser(createdUser._id, newTestCollections[0]);
     assert.isNotNull(createdCollection);
 
@@ -125,7 +125,7 @@ suite("collection model tests", () => {
     assert.equal(newTestCollections.length, foundCollections.length);
   });
 
-  test("get all for user - fail", async () => {
+  test("get all for user - fail, bad userId", async () => {
     const foundCollections = await database.collectionStore!.getAllForUser("bad id");
     assert.equal(0, foundCollections.length);
   });
@@ -181,5 +181,25 @@ suite("collection model tests", () => {
     const foundCollection = await database.collectionStore!.getById(createdCollection._id);
 
     assert.equal(foundCollection.plantIds.length, 0);
+  });
+
+  test("delete one plant from collection - success", async () => {
+    const createdCollection = await database.collectionStore!.createForUser(createdUser._id, newTestCollections[0]);
+    assert.isNotNull(createdCollection);
+
+    const createdCollectionWithPlant = await database.collectionStore!.addPlantToCollection(createdCollection._id, createdPlants[0]._id);
+    assert.isNotNull(createdCollectionWithPlant);
+
+    assert.equal(createdCollectionWithPlant.plantIds[0], createdPlants[0]._id);
+
+    const createdCollectionWithoutPlant = await database.collectionStore!.deletePlantFromCollection(createdCollectionWithPlant._id, createdCollectionWithPlant.plantIds[0]);
+    assert.isNotNull(createdCollectionWithoutPlant);
+
+    assert.equal(createdCollectionWithoutPlant.plantIds.length, 0);
+  });
+
+  test("add one plant to collection - fail, bad collectionId", async () => {
+    const createdCollectionWithoutPlant = await database.collectionStore!.deletePlantFromCollection("bad id", createdPlants[0]._id);
+    assert.isNull(createdCollectionWithoutPlant);
   });
 });

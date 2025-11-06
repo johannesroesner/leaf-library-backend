@@ -97,6 +97,11 @@ export const webRoutes: ServerRoute[] = [
     path: "/collection/{collectionId}/addPlant/{plantId}",
     options: collectionController.addPlantToCollection,
   },
+  {
+    method: "GET",
+    path: "/collection/{collectionId}/deletePlant/{plantId}",
+    options: collectionController.deletePlantFromCollection,
+  },
 
   // route for static resources
   {

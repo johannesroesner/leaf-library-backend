@@ -33,7 +33,7 @@ suite("plant model tests", () => {
     assert.deepEqual(createdPlant, foundPlant);
   });
 
-  test("get by id  - fail", async () => {
+  test("get by id  - fail, bad plantId", async () => {
     const foundPlant = await database.plantStore!.getById("bad id");
     assert.isNull(foundPlant);
   });
@@ -75,7 +75,7 @@ suite("plant model tests", () => {
     assert.isNull(foundPlant);
   });
 
-  test("delete by id - fail", async () => {
+  test("delete by id - fail, bad plantId", async () => {
     const deletedPlant = await database.plantStore!.deleteById("bad id");
     assert.isNull(deletedPlant);
   });
@@ -95,7 +95,7 @@ suite("plant model tests", () => {
     assert.equal(foundPlant.commonName, "new name");
   });
 
-  test("update - fail", async () => {
+  test("update - fail, bad plantId", async () => {
     const createdPlant = await database.plantStore!.createForUser(createdUser._id, newTestPlants[0]);
     assert.isNotNull(createdPlant);
 
@@ -115,7 +115,7 @@ suite("plant model tests", () => {
     assert.equal(newTestPlants.length, foundPlants.length);
   });
 
-  test("get all for user - fail", async () => {
+  test("get all for user - fail, bad userId", async () => {
     const foundPlants = await database.plantStore!.getAllForUser("bad id");
     assert.equal(0, foundPlants.length);
   });

@@ -104,6 +104,18 @@ export const collectionJsonStore: CollectionStore = {
     return jsonFile.data.collections[collectionIndex];
   },
 
+  async deletePlantFromCollection(collectionId: Collection["_id"], plantId: Plant["_id"]): Promise<Collection | null> {
+    await refreshPlantStatus();
+    await jsonFile.read();
+    const index = jsonFile.data.collections.findIndex((c: Collection) => c._id === collectionId);
+    if (index === -1) return null;
+    const collection = jsonFile.data.collections[index];
+    collection.plantIds = collection.plantIds.filter((id: Plant["_id"]) => id !== plantId);
+    jsonFile.data.collections[index] = collection;
+    await jsonFile.write();
+    return collection;
+  },
+
   async getAllPlantsForCollection(collectionId: Collection["_id"]): Promise<Plant[]> {
     await refreshPlantStatus();
     await jsonFile.read();

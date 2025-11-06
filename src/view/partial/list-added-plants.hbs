@@ -1,0 +1,17 @@
+{{#each addedPlants}}
+  <div class="box box-link-hover-shadow">
+    <h2 class="title">
+      {{commonName}}
+    </h2>
+    <a href="/plant/{{_id}}" class="button">
+      <span class="icon is-small">
+        <i class="fa-solid fa-seedling"></i>
+      </span>
+    </a>
+    <a href="/collection/{{../collection._id}}/deletePlant/{{_id}}" class="button">
+        <span class="icon is-small">
+          <i class="fa-solid fa-minus"></i>
+        </span>
+    </a>
+  </div>
+{{/each}}

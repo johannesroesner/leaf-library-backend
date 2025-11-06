@@ -57,15 +57,15 @@ export const collectionController: Record<string, RouteOptions> = {
       const { collectionId } = request.params;
       const collection = await database.collectionStore.getById(collectionId);
 
-      const plantsInCollection = await database.collectionStore.getAllPlantsForCollection(collectionId);
-      const plantIdsInCollection = plantsInCollection.map((p) => p._id);
+      const addedPlants = await database.collectionStore.getAllPlantsForCollection(collectionId);
+      const plantIdsInCollection = addedPlants.map((p) => p._id);
 
       const allPlants = await database.plantStore.getAll();
       const addablePlants = allPlants.filter((p) => !plantIdsInCollection.includes(p._id));
       const viewData = {
         title: "Leaf Library - Collection Details",
         collection: collection,
-        plants: plantsInCollection,
+        addedPlants: addedPlants,
         addablePlants: addablePlants,
       };
       return responseToolkit.view("collection-view", viewData);
@@ -101,6 +101,15 @@ export const collectionController: Record<string, RouteOptions> = {
       const { collectionId, plantId } = request.params;
 
       await database.collectionStore.addPlantToCollection(collectionId, plantId);
+      return responseToolkit.redirect(`/collection/${collectionId}`);
+    },
+  },
+
+  deletePlantFromCollection: {
+    handler: async function (request: Request, responseToolkit: ResponseToolkit) {
+      const { collectionId, plantId } = request.params;
+
+      await database.collectionStore.deletePlantFromCollection(collectionId, plantId);
       return responseToolkit.redirect(`/collection/${collectionId}`);
     },
   },
