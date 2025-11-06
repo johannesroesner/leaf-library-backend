@@ -1,22 +1,23 @@
 import { ServerRoute } from "@hapi/hapi";
 import { userApi } from "./api/user-api.js";
+import { plantApi } from "./api/plant-api.js";
 
 export const apiRoutes: ServerRoute[] = [
   // user api routes
   {
     method: "GET",
     path: "/api/user/all",
-    options: userApi.findAll,
+    options: userApi.getAll,
   },
   {
     method: "GET",
     path: "/api/user/byId/{userId}",
-    options: userApi.findOneById,
+    options: userApi.getOneById,
   },
   {
     method: "GET",
     path: "/api/user/byEmail/{userEmail}",
-    options: userApi.findOneByEmail,
+    options: userApi.getOneByEmail,
   },
   {
     method: "POST",
@@ -37,5 +38,42 @@ export const apiRoutes: ServerRoute[] = [
     method: "DELETE",
     path: "/api/user/delete/all",
     options: userApi.deleteAll,
+  },
+
+  // plant api routes
+  {
+    method: "GET",
+    path: "/api/plant/all",
+    options: plantApi.getAll,
+  },
+  {
+    method: "GET",
+    path: "/api/plant/byId/{plantId}",
+    options: plantApi.getOneById,
+  },
+  {
+    method: "GET",
+    path: "/api/plant/all/byUserId/{userId}",
+    options: plantApi.getAllForUser,
+  },
+  {
+    method: "POST",
+    path: "/api/plant/create/forUserId/{userId}",
+    options: plantApi.createForUserId,
+  },
+  {
+    method: "PUT",
+    path: "/api/plant/update",
+    options: plantApi.update,
+  },
+  {
+    method: "DELETE",
+    path: "/api/plant/delete/{plantId}",
+    options: plantApi.deleteOne,
+  },
+  {
+    method: "DELETE",
+    path: "/api/plant/delete/all",
+    options: plantApi.deleteAll,
   },
 ];

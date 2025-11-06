@@ -11,8 +11,7 @@ export const userApi: Record<string, RouteOptions> = {
     auth: false,
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
-        const payload = request.payload as NewUser;
-        const newUser = await database.userStore.create(payload);
+        const newUser = await database.userStore.create(request.payload as NewUser);
         if (newUser) {
           return responseToolkit.response(newUser).code(201);
         }
@@ -28,7 +27,7 @@ export const userApi: Record<string, RouteOptions> = {
     response: { schema: UserSpecPlus, failAction: validationError },
   },
 
-  findAll: {
+  getAll: {
     auth: false,
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
@@ -44,7 +43,7 @@ export const userApi: Record<string, RouteOptions> = {
     response: { schema: UserArray, failAction: validationError },
   },
 
-  findOneById: {
+  getOneById: {
     auth: false,
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
@@ -64,7 +63,7 @@ export const userApi: Record<string, RouteOptions> = {
     response: { schema: UserSpecPlus, failAction: validationError },
   },
 
-  findOneByEmail: {
+  getOneByEmail: {
     auth: false,
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
