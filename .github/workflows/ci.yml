@@ -25,8 +25,8 @@ jobs:
 
       - name: create .env file
         run: |
-          echo "COOKIE_NAME=test" >> .env
-          echo "COOKIE_PASSWORD=test" >> .env
+          echo "COOKIE_NAME=${{ secrets.COOKIE_NAME }}" >> .env
+          echo "COOKIE_PASSWORD=${{ secrets.COOKIE_PASSWORD }}" >> .env
           echo "PORT=3000" >> .env
           echo "HOST=localhost" >> .env
 

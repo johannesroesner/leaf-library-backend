@@ -35,8 +35,8 @@ const init = async () => {
   // define default auth and cookie
   server.auth.strategy("session", "cookie", {
     cookie: {
-      name: process.env.COOCKIE_NAME,
-      password: process.env.COOCKIE_PASSWORD,
+      name: process.env.COOKIE_NAME,
+      password: process.env.COOKIE_PASSWORD,
       isSecure: false,
     },
     redirectTo: "/",
