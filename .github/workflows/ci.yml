@@ -10,12 +10,6 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
-    env:
-      PORT: 3000
-      HOST: localhost
-      COOKIE_NAME: ${{ secrets.COOKIE_NAME }}
-      COOKIE_PASSWORD: ${{ secrets.COOKIE_PASSWORD }}
-
     steps:
       - name: checkout repository
         uses: actions/checkout@v3
@@ -28,6 +22,13 @@ jobs:
 
       - name: install dependencies
         run: npm install
+
+      - name: create .env file
+        run: |
+          echo "COOKIE_NAME=${{ secrets.COOKIE_NAME }}" >> .env
+          echo "COOKIE_PASSWORD=${{ secrets.COOKIE_PASSWORD }}" >> .env
+          echo "PORT=3000" >> .env
+          echo "HOST=localhost" >> .env
 
       - name: run eslint
         run: npm run lint
