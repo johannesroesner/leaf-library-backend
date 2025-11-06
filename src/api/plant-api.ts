@@ -54,8 +54,8 @@ export const plantApi: Record<string, RouteOptions> = {
       }
     },
     tags: ["api"],
-    description: "get all plant by userId",
-    notes: "returns details of all plants by a user",
+    description: "get all plants for user",
+    notes: "returns details of all plants for a user",
     validate: { params: { userId: IdSpec }, failAction: validationError },
     response: { schema: PlantArray, failAction: validationError },
   },
@@ -68,14 +68,14 @@ export const plantApi: Record<string, RouteOptions> = {
         if (!createdPlant) {
           return Boom.notFound("no user with this id");
         }
-        return responseToolkit.response(createdPlant).code(200);
+        return responseToolkit.response(createdPlant).code(201);
       } catch (error) {
         return Boom.serverUnavailable("database error");
       }
     },
     tags: ["api"],
-    description: "create plant for a given userId",
-    notes: "returns details of the new created plant for the given userId",
+    description: "create plant for a user",
+    notes: "returns details of the newly created plant for the given user",
     validate: { params: { userId: IdSpec }, payload: PlantSpec, failAction: validationError },
     response: { schema: PlantSpecPlus, failAction: validationError },
   },
@@ -104,7 +104,7 @@ export const plantApi: Record<string, RouteOptions> = {
     auth: false,
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
-        const deletedPlant = await database.userStore.deleteById(request.params.plantId);
+        const deletedPlant = await database.plantStore.deleteById(request.params.plantId);
         if (!deletedPlant) {
           return Boom.notFound("no plant with this id");
         }
