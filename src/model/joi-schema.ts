@@ -14,12 +14,12 @@ export const UserCredentialSpec = Joi.object()
 
 export const NewUserSpec = UserCredentialSpec.keys({
   firstName: Joi.string().example("Sheldon").required(),
-  lastName: Joi.string().example("Cooper").required(),
+  secondName: Joi.string().example("Cooper").required(),
 }).label("UserDetails");
 
 export const UserSpec = NewUserSpec.keys({
-  aboutMe: Joi.string().example("hey im sheldon cooper"),
-  imageUrl: Joi.string().example("www.example.com/sheldon-image.jpg"),
+  aboutMe: Joi.string().allow(null).example("hey im sheldon cooper"),
+  imageUrl: Joi.string().allow(null).example("www.example.com/sheldon-image.jpg"),
 }).label("UserDetails");
 
 export const UserSpecPlus = UserSpec.keys({
@@ -49,13 +49,17 @@ export const NewPlantSpec = Joi.object()
   .label("NewPlant");
 
 export const PlantSpec = NewPlantSpec.keys({
-  _id: IdSpec,
   date: Joi.date().example("2025-11-05T10:30:00Z"),
   imageUrls: Joi.array().items(Joi.string().uri()).example(["https://example.com/oak1.jpg", "https://example.com/oak2.jpg"]).allow(null),
   userId: IdSpec,
 }).label("Plant");
 
-export const PlantArray = Joi.array().items(PlantSpec).label("PlantArray");
+export const PlantSpecPlus = PlantSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("PlantPlus");
+
+export const PlantArray = Joi.array().items(PlantSpecPlus).label("PlantArray");
 
 // collection schema
 export const NewCollectionSpec = Joi.object()
@@ -66,10 +70,14 @@ export const NewCollectionSpec = Joi.object()
   .label("NewCollection");
 
 export const CollectionSpec = NewCollectionSpec.keys({
-  _id: IdSpec,
   imageUrl: Joi.string().example("www.example.com/summerflower-image.jpg"),
   userId: IdSpec,
   plantIds: Joi.array().items(IdSpec).label("Plant IDs"),
-}).label("Plant");
+}).label("Collection");
 
-export const CollectionArray = Joi.array().items(CollectionSpec).label("CollectionArray");
+export const CollectionSpecPlus = CollectionSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("CollectionPlus");
+
+export const CollectionArray = Joi.array().items(CollectionSpecPlus).label("CollectionArray");

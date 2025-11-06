@@ -5,56 +5,26 @@
       "firstName": "Sheldon",
       "secondName": "Cooper",
       "password": "Bazinga123!",
-      "_id": "0938f07b-56d4-445c-b671-2b7bdc2c87ec",
+      "_id": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa",
       "aboutMe": null,
       "imageUrl": null
     }
   ],
   "plants": [
     {
-      "commonName": "Sunflower",
-      "scientificName": "Helianthus annuus",
-      "type": "Flower",
-      "biome": "Meadow",
-      "imageUrls": [
-        "https://example.com/sunflower.jpg"
-      ],
-      "note": "Grows tall and loves sunlight",
-      "latitude": 48.8566,
-      "longitude": 2.3522,
-      "_id": "1dd609da-c593-4f36-adf9-af0356de9b8a",
-      "userId": "0938f07b-56d4-445c-b671-2b7bdc2c87ec",
-      "date": "2025-11-06T10:39:02.493Z"
-    },
-    {
-      "commonName": "Oak Tree",
-      "scientificName": "Quercus robur",
-      "type": "Tree",
-      "biome": "Forest",
-      "imageUrls": [
-        "https://example.com/oak.jpg"
-      ],
-      "note": "Can live for hundreds of years",
-      "latitude": 51.5074,
-      "longitude": -0.1278,
-      "_id": "d90b533b-ead3-485e-bf8d-7370be987f26",
-      "userId": "0938f07b-56d4-445c-b671-2b7bdc2c87ec",
-      "date": "2025-11-06T10:39:02.493Z"
-    },
-    {
       "commonName": "Water Lily",
       "scientificName": "Nymphaea alba",
       "type": "Aquatic Plant",
       "biome": "Pond",
+      "note": "Floats on water, blooms in summerasdasdasdsada",
+      "latitude": 45.4215,
+      "longitude": -75.6972,
+      "_id": "35665f68-ea6a-4a36-818f-3c285b99888a",
+      "userId": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa",
       "imageUrls": [
         "https://example.com/waterlily.jpg"
       ],
-      "note": "Floats on water, blooms in summer",
-      "latitude": 45.4215,
-      "longitude": -75.6972,
-      "_id": "947ddfd8-c10b-4f27-8e47-7acd61b6abd3",
-      "userId": "0938f07b-56d4-445c-b671-2b7bdc2c87ec",
-      "date": "2025-11-06T10:39:02.493Z"
+      "date": "2025-11-06T12:29:33.791Z"
     },
     {
       "commonName": "Ivy",
@@ -67,21 +37,32 @@
       "note": "Climbs walls and fences",
       "latitude": 40.7128,
       "longitude": -74.006,
-      "_id": "9debd5ee-89d8-4e8a-981d-a0e5d54d003b",
-      "userId": "0938f07b-56d4-445c-b671-2b7bdc2c87ec",
-      "date": "2025-11-06T10:39:02.493Z"
+      "_id": "d23de673-1080-4092-bd66-bb8f6de093e3",
+      "userId": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa",
+      "date": "2025-11-06T12:29:33.791Z"
+    },
+    {
+      "commonName": "asdfdsaf",
+      "scientificName": "sadfsadfasdf",
+      "type": "Flower",
+      "biome": "Urban",
+      "note": "asdfasdfsd",
+      "latitude": 1,
+      "longitude": 23,
+      "_id": "dca3c8c0-a9e3-47d9-8829-a6aa62a4d606",
+      "userId": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa",
+      "date": "2025-11-06T13:07:16.417Z"
     }
   ],
   "collections": [
     {
       "name": "Test",
-      "description": "test",
-      "_id": "e54f94d0-c300-4597-b58d-644c5e919df5",
-      "userId": "0938f07b-56d4-445c-b671-2b7bdc2c87ec",
+      "description": "essafds",
+      "_id": "2f2e12ca-05c3-4d5f-9e66-a14aaf84b7ed",
       "plantIds": [
-        "1dd609da-c593-4f36-adf9-af0356de9b8a",
-        "9debd5ee-89d8-4e8a-981d-a0e5d54d003b"
-      ]
+        "35665f68-ea6a-4a36-818f-3c285b99888a"
+      ],
+      "userId": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa"
     }
   ]
 }
