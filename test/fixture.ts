@@ -2,6 +2,8 @@ import type { NewUser } from "../src/model/interface/user.js";
 import { NewPlant } from "../src/model/interface/plant";
 import { NewCollection } from "../src/model/interface/collection";
 
+export const serviceUrl: string = "http://localhost:3000";
+
 export const newTestUsers: NewUser[] = [
   {
     email: "sheldon.cooper@caltechmail.com",
