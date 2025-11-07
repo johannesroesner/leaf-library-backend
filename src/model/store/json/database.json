@@ -1,15 +1,5 @@
 {
-  "users": [
-    {
-      "email": "sheldon.cooper@caltechmail.com",
-      "firstName": "Sheldon",
-      "secondName": "Cooper",
-      "password": "Bazinga123!",
-      "_id": "ee20243b-a8be-43cc-976c-aa947af4835d",
-      "aboutMe": null,
-      "imageUrl": null
-    }
-  ],
+  "users": [],
   "plants": [],
   "collections": []
 }

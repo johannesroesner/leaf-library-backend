@@ -42,15 +42,23 @@ export const collectionJsonStore: CollectionStore = {
     return foundCollection ?? null;
   },
 
-  async getAllForUser(userId: User["_id"]): Promise<Collection[]> {
+  async getAllForUser(userId: User["_id"]): Promise<Collection[] | null> {
     await refreshPlantStatus();
     await jsonFile.read();
+    const index = jsonFile.data.users.findIndex((u: User) => u._id === userId);
+    if (index === -1) {
+      return null;
+    }
     return jsonFile.data.collections.filter((c: Collection) => c.userId === userId);
   },
 
-  async createForUser(userId: User["_id"], newCollection: NewCollection): Promise<Collection> {
+  async createForUser(userId: User["_id"], newCollection: NewCollection): Promise<Collection | null> {
     await refreshPlantStatus();
     await jsonFile.read();
+    const index = jsonFile.data.users.findIndex((u: User) => u._id === userId);
+    if (index === -1) {
+      return null;
+    }
     const collection: Collection = { ...newCollection, _id: v4(), userId: userId, plantIds: [] } as Collection;
     jsonFile.data.collections.push(collection);
     await jsonFile.write();

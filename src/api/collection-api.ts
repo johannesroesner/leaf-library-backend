@@ -48,6 +48,9 @@ export const collectionApi: Record<string, RouteOptions> = {
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const foundCollections = await database.collectionStore.getAllForUser(request.params.userId);
+        if (!foundCollections) {
+          return Boom.notFound("no user with this id");
+        }
         return responseToolkit.response(foundCollections).code(200);
       } catch (error) {
         return Boom.serverUnavailable("database error");
@@ -84,7 +87,7 @@ export const collectionApi: Record<string, RouteOptions> = {
     auth: false,
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
-        const updatedCollection = database.collectionStore.update(request.payload as Collection);
+        const updatedCollection = await database.collectionStore.update(request.payload as Collection);
         if (!updatedCollection) {
           return Boom.notFound("no collection with this id");
         }
@@ -96,7 +99,7 @@ export const collectionApi: Record<string, RouteOptions> = {
     tags: ["api"],
     description: "update a collection",
     notes: "returns the updated collection",
-    validate: { payload: CollectionSpec, failAction: validationError },
+    validate: { payload: CollectionSpecPlus, failAction: validationError },
     response: { schema: CollectionSpecPlus, failAction: validationError },
   },
 

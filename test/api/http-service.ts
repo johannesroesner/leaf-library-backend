@@ -2,7 +2,7 @@ import axios from "axios";
 // @ts-ignore
 import { serviceUrl } from "../fixture.js";
 import { NewUser, User } from "../../src/model/interface/user.js";
-import { Plant } from "../../src/model/interface/plant.js";
+import { NewPlant, Plant } from "../../src/model/interface/plant.js";
 import { Collection } from "../../src/model/interface/collection";
 
 export const httpService = {
@@ -60,7 +60,7 @@ export const httpService = {
     return response.data;
   },
 
-  async createPlantForUser(userId: string, plant: string) {
+  async createPlantForUser(userId: string, plant: NewPlant) {
     const response = await axios.post(`${this.leafLibraryBackendUrl}/api/plant/create/forUserId/${userId}`, plant);
     return response.data;
   },

@@ -28,9 +28,9 @@ export interface PlantStore {
 
   getById(plantId: Plant["_id"]): Promise<Plant | null>;
 
-  getAllForUser(userId: User["_id"]): Promise<Plant[]>;
+  getAllForUser(userId: User["_id"]): Promise<Plant[] | null>;
 
-  createForUser(userId: User["_id"], newPlant: NewPlant): Promise<Plant>;
+  createForUser(userId: User["_id"], newPlant: NewPlant): Promise<Plant | null>;
 
   update(plant: Plant): Promise<Plant | null>;
 
@@ -44,9 +44,9 @@ export interface CollectionStore {
 
   getById(collectionId: Collection["_id"]): Promise<Collection | null>;
 
-  getAllForUser(userId: User["_id"]): Promise<Collection[]>;
+  getAllForUser(userId: User["_id"]): Promise<Collection[] | null>;
 
-  createForUser(userId: User["_id"], newCollection: NewCollection): Promise<Collection>;
+  createForUser(userId: User["_id"], newCollection: NewCollection): Promise<Collection | null>;
 
   update(collection: Collection): Promise<Collection | null>;
 

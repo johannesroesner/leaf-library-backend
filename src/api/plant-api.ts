@@ -48,6 +48,9 @@ export const plantApi: Record<string, RouteOptions> = {
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const foundPlants = await database.plantStore.getAllForUser(request.params.userId);
+        if (!foundPlants) {
+          return Boom.notFound("no user with this id");
+        }
         return responseToolkit.response(foundPlants).code(200);
       } catch (error) {
         return Boom.serverUnavailable("database error");
@@ -84,7 +87,7 @@ export const plantApi: Record<string, RouteOptions> = {
     auth: false,
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
-        const updatedPlant = database.plantStore.update(request.payload as Plant);
+        const updatedPlant = await database.plantStore.update(request.payload as Plant);
         if (!updatedPlant) {
           return Boom.notFound("no plant with this id");
         }
@@ -96,7 +99,7 @@ export const plantApi: Record<string, RouteOptions> = {
     tags: ["api"],
     description: "update a plant",
     notes: "returns the updated plant",
-    validate: { payload: PlantSpec, failAction: validationError },
+    validate: { payload: PlantSpecPlus, failAction: validationError },
     response: { schema: PlantSpecPlus, failAction: validationError },
   },
 
