@@ -23,11 +23,18 @@ jobs:
       - name: install dependencies
         run: npm install
 
+      - name: create .env file
+        run: |
+          echo "COOKIE_NAME=testName" >> .env
+          echo "COOKIE_PASSWORD=testPassword" >> .env
+          echo "PORT=3000" >> .env
+          echo "HOST=localhost" >> .env
+
       - name: run eslint
         run: npm run lint
 
-      - name: compile typeScript
-        run: npm run build
+      - name: start server
+        run: npm run start & sleep 5
 
       - name: run tests
         run: npm test

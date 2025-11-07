@@ -9,13 +9,13 @@ export const BiomeArray = ["Urban", "Meadow", "Forest", "Pond", "River", "Sea", 
 export type Biome = (typeof BiomeArray)[number];
 
 export interface Plant {
-  _id: String;
-  commonName: String;
-  scientificName: String;
+  _id: string;
+  commonName: string;
+  scientificName: string;
   type: PlantType;
   biome: Biome;
-  imageUrls: String[] | null;
-  note: String | null;
+  imageUrls: string[] | null;
+  note: string | null;
   date: Date;
   latitude: Number;
   longitude: Number;

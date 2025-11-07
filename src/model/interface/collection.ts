@@ -2,10 +2,10 @@ import type { User } from "./user.js";
 import type { Plant } from "./plant.js";
 
 export interface Collection {
-  _id: String;
-  name: String;
-  description: String | null;
-  imageUrl: String | null;
+  _id: string;
+  name: string;
+  description: string;
+  imageUrl: string | null;
   userId: User["_id"];
   plantIds: Plant["_id"][];
 }

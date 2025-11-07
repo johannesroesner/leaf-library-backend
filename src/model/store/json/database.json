@@ -5,26 +5,26 @@
       "firstName": "Sheldon",
       "secondName": "Cooper",
       "password": "Bazinga123!",
-      "_id": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa",
+      "_id": "6663c49f-e0a3-47da-ad84-b5b98ea3c1da",
       "aboutMe": null,
       "imageUrl": null
     }
   ],
   "plants": [
     {
-      "commonName": "Water Lily",
-      "scientificName": "Nymphaea alba",
-      "type": "Aquatic Plant",
-      "biome": "Pond",
-      "note": "Floats on water, blooms in summerasdasdasdsada",
-      "latitude": 45.4215,
-      "longitude": -75.6972,
-      "_id": "35665f68-ea6a-4a36-818f-3c285b99888a",
-      "userId": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa",
+      "commonName": "Oak Tree",
+      "scientificName": "Quercus robur",
+      "type": "Tree",
+      "biome": "Forest",
       "imageUrls": [
-        "https://example.com/waterlily.jpg"
+        "https://example.com/oak.jpg"
       ],
-      "date": "2025-11-06T12:29:33.791Z"
+      "note": "Can live for hundreds of years",
+      "latitude": 51.5074,
+      "longitude": -0.1278,
+      "_id": "b4e7a4ce-3db6-40c5-aede-711f5e555661",
+      "userId": "6663c49f-e0a3-47da-ad84-b5b98ea3c1da",
+      "date": "2025-11-07T17:59:44.456Z"
     },
     {
       "commonName": "Ivy",
@@ -37,32 +37,22 @@
       "note": "Climbs walls and fences",
       "latitude": 40.7128,
       "longitude": -74.006,
-      "_id": "d23de673-1080-4092-bd66-bb8f6de093e3",
-      "userId": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa",
-      "date": "2025-11-06T12:29:33.791Z"
-    },
-    {
-      "commonName": "asdfdsaf",
-      "scientificName": "sadfsadfasdf",
-      "type": "Flower",
-      "biome": "Urban",
-      "note": "asdfasdfsd",
-      "latitude": 1,
-      "longitude": 23,
-      "_id": "dca3c8c0-a9e3-47d9-8829-a6aa62a4d606",
-      "userId": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa",
-      "date": "2025-11-06T13:07:16.417Z"
+      "_id": "1e87a302-bb0d-4eec-ab37-7110f54a4c9f",
+      "userId": "6663c49f-e0a3-47da-ad84-b5b98ea3c1da",
+      "date": "2025-11-07T17:59:44.457Z"
     }
   ],
   "collections": [
     {
-      "name": "Test",
-      "description": "essafds",
-      "_id": "2f2e12ca-05c3-4d5f-9e66-a14aaf84b7ed",
+      "name": "Summer Gardensdf",
+      "description": "A collection of my favorite summer plants",
+      "_id": "8470f8b7-e747-4656-9e66-34ed822feda9",
       "plantIds": [
-        "35665f68-ea6a-4a36-818f-3c285b99888a"
+        "b4e7a4ce-3db6-40c5-aede-711f5e555661",
+        "1e87a302-bb0d-4eec-ab37-7110f54a4c9f"
       ],
-      "userId": "76aed298-f60b-44b4-be02-fb5cc8b8a2aa"
+      "userId": "6663c49f-e0a3-47da-ad84-b5b98ea3c1da",
+      "imageUrl": "https://example.com/summer-garden.jpg"
     }
   ]
 }

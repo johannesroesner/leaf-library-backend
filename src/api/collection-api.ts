@@ -48,6 +48,9 @@ export const collectionApi: Record<string, RouteOptions> = {
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const foundCollections = await database.collectionStore.getAllForUser(request.params.userId);
+        if (!foundCollections) {
+          return Boom.notFound("no user with this id");
+        }
         return responseToolkit.response(foundCollections).code(200);
       } catch (error) {
         return Boom.serverUnavailable("database error");
@@ -84,7 +87,7 @@ export const collectionApi: Record<string, RouteOptions> = {
     auth: false,
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
-        const updatedCollection = database.collectionStore.update(request.payload as Collection);
+        const updatedCollection = await database.collectionStore.update(request.payload as Collection);
         if (!updatedCollection) {
           return Boom.notFound("no collection with this id");
         }
@@ -96,7 +99,7 @@ export const collectionApi: Record<string, RouteOptions> = {
     tags: ["api"],
     description: "update a collection",
     notes: "returns the updated collection",
-    validate: { payload: CollectionSpec, failAction: validationError },
+    validate: { payload: CollectionSpecPlus, failAction: validationError },
     response: { schema: CollectionSpecPlus, failAction: validationError },
   },
 
@@ -124,10 +127,7 @@ export const collectionApi: Record<string, RouteOptions> = {
     auth: false,
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
-        const deletedCollections = await database.collectionStore.deleteAll();
-        if (deletedCollections.length > 0) {
-          return Boom.serverUnavailable("database error");
-        }
+        await database.collectionStore.deleteAll();
         return responseToolkit.response().code(204);
       } catch (error) {
         return Boom.serverUnavailable("database error");
@@ -165,7 +165,7 @@ export const collectionApi: Record<string, RouteOptions> = {
       try {
         const collectionWithDeletedPlant = await database.collectionStore.deletePlantFromCollection(request.params.collectionId, request.params.plantId);
         if (!collectionWithDeletedPlant) {
-          return Boom.notFound("no collection with this collectionId");
+          return Boom.notFound("no collection with this collectionId or no plant with this plantId");
         }
         return responseToolkit.response().code(204);
       } catch (error) {
@@ -184,6 +184,9 @@ export const collectionApi: Record<string, RouteOptions> = {
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const foundPlants = await database.collectionStore.getAllPlantsForCollection(request.params.collectionId);
+        if (!foundPlants) {
+          return Boom.notFound("no collection with this collectionId");
+        }
         return responseToolkit.response(foundPlants).code(200);
       } catch (error) {
         return Boom.serverUnavailable("database Error");

@@ -25,8 +25,12 @@ export const plantJsonStore: PlantStore = {
       date: new Date(foundPlant.date),
     };
   },
-  async getAllForUser(userId: User["_id"]): Promise<Plant[]> {
+  async getAllForUser(userId: User["_id"]): Promise<Plant[] | null> {
     await jsonFile.read();
+    const index = jsonFile.data.users.findIndex((u: User) => u._id === userId);
+    if (index === -1) {
+      return null;
+    }
     const foundPlants = jsonFile.data.plants.filter((p: Plant) => p.userId === userId);
     return foundPlants.map((p: Plant) => ({
       ...p,
@@ -34,8 +38,12 @@ export const plantJsonStore: PlantStore = {
     }));
   },
 
-  async createForUser(userId: User["_id"], newPlant: NewPlant): Promise<Plant> {
+  async createForUser(userId: User["_id"], newPlant: NewPlant): Promise<Plant | null> {
     await jsonFile.read();
+    const index = jsonFile.data.users.findIndex((u: User) => u._id === userId);
+    if (index === -1) {
+      return null;
+    }
     const plant: Plant = { ...newPlant, _id: v4(), userId: userId, date: new Date() } as Plant;
     jsonFile.data.plants.push(plant);
     await jsonFile.write();

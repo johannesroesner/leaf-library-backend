@@ -10,7 +10,7 @@
     "lint": "eslint 'src/**/*.{ts,js}'",
     "build": "tsc && rm -rf dist/view && cp -r src/view dist/view",
     "start": "npm run build && node ./dist/server.js",
-    "test": "c8 mocha"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -37,6 +37,7 @@
     "@types/node": "^24.9.2",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
     "@typescript-eslint/parser": "^8.46.2",
+    "axios": "^1.13.2",
     "c8": "^10.1.3",
     "chai": "^6.2.0",
     "eslint": "^8.57.1",
