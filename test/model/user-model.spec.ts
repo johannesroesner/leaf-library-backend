@@ -2,11 +2,11 @@ import { suite, test, setup } from "mocha";
 import { assert } from "chai";
 import { database } from "../../src/model/database.js";
 // @ts-ignore
-import { newTestCollections, newTestPlants, newTestUsers } from "../fixture.js";
+import { newTestAdmins, newTestCollections, newTestPlants, newTestUsers } from "../fixture.js";
 
 suite("user model tests", () => {
   setup(async () => {
-    database.init("json");
+    await database.init("json");
     await database.userStore.deleteAll();
     await database.plantStore.deleteAll();
     await database.collectionStore.deleteAll();
@@ -157,5 +157,25 @@ suite("user model tests", () => {
 
     const foundCollections = await database.collectionStore.getAll();
     assert.equal(foundCollections.length, 0);
+  });
+
+  test("init admins - success", async () => {
+    await database.userStore.initAdmins(newTestAdmins);
+    const foundUsers = await database.userStore.getAll();
+    assert.equal(foundUsers.length, newTestAdmins.length);
+  });
+
+  test("get non admins - success", async () => {
+    await database.userStore.initAdmins(newTestAdmins);
+    let foundUsers = await database.userStore.getAll();
+    assert.equal(foundUsers.length, newTestAdmins.length);
+
+    for (let i = 0; i < newTestUsers.length; i += 1) {
+      // eslint-disable-next-line no-await-in-loop
+      const createdUser = await database.userStore.create(newTestUsers[i]);
+      assert.isNotNull(createdUser);
+    }
+    foundUsers = await database.userStore.getAllNonAdmin();
+    assert.equal(foundUsers.length, newTestUsers.length);
   });
 });

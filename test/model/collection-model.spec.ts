@@ -12,7 +12,7 @@ suite("collection model tests", () => {
 
   setup(async () => {
     createdPlants = [];
-    database.init("json");
+    await database.init("json");
     await database.userStore.deleteAll();
     await database.plantStore.deleteAll();
     await database.collectionStore.deleteAll();

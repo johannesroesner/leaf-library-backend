@@ -2,7 +2,7 @@ import { Request, ResponseToolkit, RouteOptions } from "@hapi/hapi";
 import Joi from "joi";
 import { NewUserSpec, UserCredentialSpec } from "../model/joi-schema.js";
 import { database } from "../model/database.js";
-import type { NewUser, UserCredential } from "../model/interface/user.js";
+import type { NewUser, Role, UserCredential } from "../model/interface/user.js";
 
 export const accountController: Record<string, RouteOptions> = {
   index: {
@@ -74,7 +74,7 @@ interface Session {
 
 export interface Credential {
   id: string;
-  role: string; // admin maybe later
+  role: Role;
 }
 
 export const validate = async (request: Request, session: Session) => {
@@ -82,5 +82,5 @@ export const validate = async (request: Request, session: Session) => {
   if (!user) {
     return { isValid: false };
   }
-  return { isValid: true, credentials: { id: user._id, role: "" } };
+  return { isValid: true, credentials: { id: user._id, role: user.role } };
 };

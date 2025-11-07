@@ -1,58 +1,66 @@
 {
   "users": [
     {
+      "email": "one@admin.com",
+      "firstName": "admin",
+      "secondName": "one",
+      "password": "one123!",
+      "_id": "ff176d77-a018-45b2-971b-019575dcd627",
+      "aboutMe": null,
+      "imageUrl": null,
+      "role": "admin"
+    },
+    {
+      "email": "two@admin.com",
+      "firstName": "admin",
+      "secondName": "two",
+      "password": "two123!",
+      "_id": "d83ed442-462b-4c1b-8058-2a7aabdd2c88",
+      "aboutMe": null,
+      "imageUrl": null,
+      "role": "admin"
+    },
+    {
       "email": "sheldon.cooper@caltechmail.com",
       "firstName": "Sheldon",
       "secondName": "Cooper",
       "password": "Bazinga123!",
-      "_id": "6663c49f-e0a3-47da-ad84-b5b98ea3c1da",
+      "_id": "440be2fc-8bac-4762-8bd1-46973eceed47",
       "aboutMe": null,
-      "imageUrl": null
-    }
-  ],
-  "plants": [
-    {
-      "commonName": "Oak Tree",
-      "scientificName": "Quercus robur",
-      "type": "Tree",
-      "biome": "Forest",
-      "imageUrls": [
-        "https://example.com/oak.jpg"
-      ],
-      "note": "Can live for hundreds of years",
-      "latitude": 51.5074,
-      "longitude": -0.1278,
-      "_id": "b4e7a4ce-3db6-40c5-aede-711f5e555661",
-      "userId": "6663c49f-e0a3-47da-ad84-b5b98ea3c1da",
-      "date": "2025-11-07T17:59:44.456Z"
+      "imageUrl": null,
+      "role": "default"
     },
     {
-      "commonName": "Ivy",
-      "scientificName": "Hedera helix",
-      "type": "Climber",
-      "biome": "Urban",
-      "imageUrls": [
-        "https://example.com/ivy.jpg"
-      ],
-      "note": "Climbs walls and fences",
-      "latitude": 40.7128,
-      "longitude": -74.006,
-      "_id": "1e87a302-bb0d-4eec-ab37-7110f54a4c9f",
-      "userId": "6663c49f-e0a3-47da-ad84-b5b98ea3c1da",
-      "date": "2025-11-07T17:59:44.457Z"
+      "email": "leonard.hofstadter@physicsmail.org",
+      "firstName": "Leonard",
+      "secondName": "Hofstadter",
+      "password": "Roommate456!",
+      "_id": "459e370d-dc7a-4fed-81ab-f9bd722f27e4",
+      "aboutMe": null,
+      "imageUrl": null,
+      "role": "default"
+    },
+    {
+      "email": "howard.wolowitz@aerospacehub.net",
+      "firstName": "Howard",
+      "secondName": "Wolowitz",
+      "password": "Rocket789!",
+      "_id": "58842e2c-05e3-4391-9eb6-c5c1d0743dd3",
+      "aboutMe": null,
+      "imageUrl": null,
+      "role": "default"
+    },
+    {
+      "email": "raj.koothrappali@cosmosmail.io",
+      "firstName": "Raj",
+      "secondName": "Koothrappali",
+      "password": "Astro321!",
+      "_id": "889996f7-3b05-4c49-842b-d387636f5ad9",
+      "aboutMe": null,
+      "imageUrl": null,
+      "role": "default"
     }
   ],
-  "collections": [
-    {
-      "name": "Summer Gardensdf",
-      "description": "A collection of my favorite summer plants",
-      "_id": "8470f8b7-e747-4656-9e66-34ed822feda9",
-      "plantIds": [
-        "b4e7a4ce-3db6-40c5-aede-711f5e555661",
-        "1e87a302-bb0d-4eec-ab37-7110f54a4c9f"
-      ],
-      "userId": "6663c49f-e0a3-47da-ad84-b5b98ea3c1da",
-      "imageUrl": "https://example.com/summer-garden.jpg"
-    }
-  ]
+  "plants": [],
+  "collections": []
 }

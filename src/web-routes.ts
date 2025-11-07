@@ -3,6 +3,7 @@ import { accountController } from "./controller/account-controller.js";
 import { gardenController } from "./controller/garden-controller.js";
 import { plantController } from "./controller/plant-controller.js";
 import { collectionController } from "./controller/collection-controller.js";
+import { adminController } from "./controller/admin-controller.js";
 
 export const webRoutes: ServerRoute[] = [
   // account/login routes
@@ -101,6 +102,17 @@ export const webRoutes: ServerRoute[] = [
     method: "GET",
     path: "/collection/{collectionId}/deletePlant/{plantId}",
     options: collectionController.deletePlantFromCollection,
+  },
+
+  {
+    method: "GET",
+    path: "/admin",
+    options: adminController.index,
+  },
+  {
+    method: "GET",
+    path: "/user/{userId}/delete",
+    options: adminController.deleteUser,
   },
 
   // route for static resources

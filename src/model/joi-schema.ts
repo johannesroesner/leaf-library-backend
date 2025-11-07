@@ -25,6 +25,7 @@ export const UserSpec = NewUserSpec.keys({
 export const UserSpecPlus = UserSpec.keys({
   _id: IdSpec,
   __v: Joi.number(),
+  role: Joi.string(),
 }).label("UserDetailsPlus");
 
 export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");

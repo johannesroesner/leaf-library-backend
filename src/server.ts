@@ -73,7 +73,7 @@ const init = async () => {
   server.route(apiRoutes);
 
   // dataBase init
-  database.init("json");
+  await database.init("json");
 
   // start server
   await server.start();
