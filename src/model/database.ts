@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import type { NewUser, User } from "./interface/user.js";
 import type { NewPlant, Plant } from "./interface/plant.js";
 import type { NewCollection, Collection } from "./interface/collection.js";
@@ -7,7 +8,22 @@ import { collectionJsonStore } from "./store/json/collection-json-store.js";
 
 type StoreType = "json" | "mongo";
 
+dotenv.config();
+
+const adminList: NewUser[] = [
+  {
+    email: process.env.ADMIN_EMAIL,
+    firstName: "admin",
+    secondName: "admin",
+    password: process.env.ADMIN_PASSWORD,
+  },
+];
+
 export interface UserStore {
+  initAdmins(admins: NewUser[]): Promise<void>;
+
+  getAllNonAdmin(): Promise<User[]>;
+
   getAll(): Promise<User[]>;
 
   getById(userId: User["_id"]): Promise<User | null>;
@@ -66,7 +82,7 @@ interface Database {
   plantStore: PlantStore | null;
   collectionStore: CollectionStore | null;
 
-  init(storeType: StoreType): void;
+  init(storeType: StoreType): Promise<void>;
 }
 
 export const database: Database = {
@@ -74,9 +90,10 @@ export const database: Database = {
   plantStore: null,
   collectionStore: null,
 
-  init(storeType: StoreType) {
+  async init(storeType: StoreType) {
     if (storeType === "json") {
       this.userStore = userJsonStore;
+      await this.userStore.initAdmins(adminList);
       this.plantStore = plantJsonStore;
       this.collectionStore = collectionJsonStore;
     } else {

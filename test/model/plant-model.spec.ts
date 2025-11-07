@@ -9,7 +9,7 @@ suite("plant model tests", () => {
   let createdUser: User;
 
   setup(async () => {
-    database.init("json");
+    await database.init("json");
     await database.userStore.deleteAll();
     await database.plantStore.deleteAll();
     await database.collectionStore.deleteAll();

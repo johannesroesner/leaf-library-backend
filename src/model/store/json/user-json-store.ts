@@ -17,6 +17,22 @@ async function deleteAllPlantsAndCollectionsForUserId(userId: string) {
 }
 
 export const userJsonStore: UserStore = {
+  async initAdmins(admins: NewUser[]) {
+    await jsonFile.read();
+    for (let i = 0; i < admins.length; i += 1) {
+      const admin: User = { ...admins[i], _id: v4(), aboutMe: null, imageUrl: null, role: "admin" } as User;
+      jsonFile.data.users.push(admin);
+      // eslint-disable-next-line no-await-in-loop
+      await jsonFile.write();
+    }
+  },
+
+  async getAllNonAdmin(): Promise<User[]> {
+    await jsonFile.read();
+    const nonAdmins: User[] = jsonFile.data.users.filter((u: User) => u.role !== "admin");
+    return nonAdmins;
+  },
+
   async getAll(): Promise<User[]> {
     await jsonFile.read();
     return jsonFile.data.users;
@@ -36,7 +52,7 @@ export const userJsonStore: UserStore = {
 
   async create(newUser: NewUser): Promise<User> {
     await jsonFile.read();
-    const user: User = { ...newUser, _id: v4(), aboutMe: null, imageUrl: null } as User;
+    const user: User = { ...newUser, _id: v4(), aboutMe: null, imageUrl: null, role: "default" } as User;
     jsonFile.data.users.push(user);
     await jsonFile.write();
     return user;
@@ -57,9 +73,11 @@ export const userJsonStore: UserStore = {
     await jsonFile.read();
     const foundUsers = jsonFile.data.users;
     jsonFile.data.users = [];
+    await jsonFile.write();
     jsonFile.data.plants = [];
+    await jsonFile.write();
     jsonFile.data.collections = [];
-    const test = await jsonFile.write();
+    await jsonFile.write();
     return foundUsers;
   },
 
