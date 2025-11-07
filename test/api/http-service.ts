@@ -3,7 +3,7 @@ import axios from "axios";
 import { serviceUrl } from "../fixture.js";
 import { NewUser, User } from "../../src/model/interface/user.js";
 import { NewPlant, Plant } from "../../src/model/interface/plant.js";
-import { Collection } from "../../src/model/interface/collection";
+import { NewCollection, Collection } from "../../src/model/interface/collection.js";
 
 export const httpService = {
   leafLibraryBackendUrl: serviceUrl,
@@ -96,7 +96,7 @@ export const httpService = {
     return response.data;
   },
 
-  async createCollectionForUser(userId: string, collection: Collection) {
+  async createCollectionForUser(userId: string, collection: NewCollection) {
     const response = await axios.post(`${this.leafLibraryBackendUrl}/api/collection/create/forUserId/${userId}`, collection);
     return response.data;
   },

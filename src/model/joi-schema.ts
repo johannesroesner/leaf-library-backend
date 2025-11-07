@@ -70,7 +70,7 @@ export const NewCollectionSpec = Joi.object()
   .label("NewCollection");
 
 export const CollectionSpec = NewCollectionSpec.keys({
-  imageUrl: Joi.string().example("www.example.com/summerflower-image.jpg"),
+  imageUrl: Joi.string().allow(null).example("www.example.com/summerflower-image.jpg"),
   userId: IdSpec,
   plantIds: Joi.array().items(IdSpec).label("Plant IDs"),
 }).label("Collection");

@@ -115,16 +115,18 @@ export const collectionJsonStore: CollectionStore = {
   async deletePlantFromCollection(collectionId: Collection["_id"], plantId: Plant["_id"]): Promise<Collection | null> {
     await refreshPlantStatus();
     await jsonFile.read();
-    const index = jsonFile.data.collections.findIndex((c: Collection) => c._id === collectionId);
-    if (index === -1) return null;
-    const collection = jsonFile.data.collections[index];
+    const collectionIndex = jsonFile.data.collections.findIndex((c: Collection) => c._id === collectionId);
+    if (collectionIndex === -1) return null;
+    const plantIndex = jsonFile.data.plants.findIndex((p: Plant) => p._id === plantId);
+    if (plantIndex === -1) return null;
+    const collection = jsonFile.data.collections[collectionIndex];
     collection.plantIds = collection.plantIds.filter((id: Plant["_id"]) => id !== plantId);
-    jsonFile.data.collections[index] = collection;
+    jsonFile.data.collections[collectionIndex] = collection;
     await jsonFile.write();
     return collection;
   },
 
-  async getAllPlantsForCollection(collectionId: Collection["_id"]): Promise<Plant[]> {
+  async getAllPlantsForCollection(collectionId: Collection["_id"]): Promise<Plant[] | null> {
     await refreshPlantStatus();
     await jsonFile.read();
     const index = jsonFile.data.collections.findIndex((c: Collection) => c._id === collectionId);

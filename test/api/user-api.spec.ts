@@ -9,12 +9,14 @@ suite("user api test", () => {
 
   setup(async () => {
     await httpService.deleteAllUsers();
+    await httpService.deleteAllPlants();
+    await httpService.deleteAllCollections();
   });
 
   test("create - success", async () => {
-    const newUser = await httpService.createUser(newTestUsers[0]);
-    assert.isNotNull(newUser);
-    assert.equal(newUser.email, newTestUsers[0].email);
+    const createdUser = await httpService.createUser(newTestUsers[0]);
+    assert.isNotNull(createdUser);
+    assert.equal(createdUser.email, newTestUsers[0].email);
   });
 
   test("create - fail, bad payload", async () => {
@@ -29,18 +31,18 @@ suite("user api test", () => {
   test("get all - success", async () => {
     for (let i = 0; i < newTestUsers.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      const newUser = await httpService.createUser(newTestUsers[i]);
-      assert.isNotNull(newUser);
+      const createdUser = await httpService.createUser(newTestUsers[i]);
+      assert.isNotNull(createdUser);
     }
     const foundUsers = await httpService.getAllUsers();
     assert.equal(foundUsers.length, newTestUsers.length);
   });
 
   test("get by id - success", async () => {
-    const newUser = await httpService.createUser(newTestUsers[0]);
-    assert.isNotNull(newUser);
+    const createdUser = await httpService.createUser(newTestUsers[0]);
+    assert.isNotNull(createdUser);
 
-    const foundUsers = await httpService.getUserById(newUser._id);
+    const foundUsers = await httpService.getUserById(createdUser._id);
     assert.equal(foundUsers.email, newTestUsers[0].email);
   });
 
@@ -54,10 +56,10 @@ suite("user api test", () => {
   });
 
   test("get by email - success", async () => {
-    const newUser = await httpService.createUser(newTestUsers[0]);
-    assert.isNotNull(newUser);
+    const createdUser = await httpService.createUser(newTestUsers[0]);
+    assert.isNotNull(createdUser);
 
-    const foundUsers = await httpService.getUserByEmail(newUser.email);
+    const foundUsers = await httpService.getUserByEmail(createdUser.email);
     assert.equal(foundUsers.firstName, newTestUsers[0].firstName);
   });
 
@@ -71,11 +73,11 @@ suite("user api test", () => {
   });
 
   test("update - success", async () => {
-    const newUser = await httpService.createUser(newTestUsers[0]);
-    assert.isNotNull(newUser);
-    newUser.email = "new@email.com";
+    const createdUser = await httpService.createUser(newTestUsers[0]);
+    assert.isNotNull(createdUser);
+    createdUser.email = "new@email.com";
 
-    const updatedUser = await httpService.updateUser(newUser);
+    const updatedUser = await httpService.updateUser(createdUser);
     assert.equal(updatedUser.email, "new@email.com");
   });
 
@@ -89,13 +91,13 @@ suite("user api test", () => {
   });
 
   test("delete by id - success", async () => {
-    const newUser = await httpService.createUser(newTestUsers[0]);
-    assert.isNotNull(newUser);
-    const foundUser = await httpService.getUserById(newUser._id);
+    const createdUser = await httpService.createUser(newTestUsers[0]);
+    assert.isNotNull(createdUser);
+    const foundUser = await httpService.getUserById(createdUser._id);
     assert.isNotNull(foundUser);
-    await httpService.deleteUser(newUser._id);
+    await httpService.deleteUser(createdUser._id);
     try {
-      await httpService.getUserById(newUser);
+      await httpService.getUserById(createdUser);
       assert.fail("expected 404 error, but request succeeded");
     } catch (error) {
       assert.equal(error.response.status, 404, "expected HTTP 404 Not Found");
@@ -114,8 +116,8 @@ suite("user api test", () => {
   test("delete all - success", async () => {
     for (let i = 0; i < newTestUsers.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      const newUser = await httpService.createUser(newTestUsers[i]);
-      assert.isNotNull(newUser);
+      const createdUser = await httpService.createUser(newTestUsers[i]);
+      assert.isNotNull(createdUser);
     }
     let foundUsers = await httpService.getAllUsers();
     assert.equal(foundUsers.length, newTestUsers.length);

@@ -92,7 +92,7 @@ export const newTestCollections: NewCollection[] = [
   },
   {
     name: "Succulent Paradise",
-    description: null,
+    description: "A lot of succulents",
     imageUrl: "https://example.com/succulents.jpg",
   },
 ];

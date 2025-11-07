@@ -12,6 +12,7 @@ suite("plant api test", () => {
   setup(async () => {
     await httpService.deleteAllUsers();
     await httpService.deleteAllPlants();
+    await httpService.deleteAllCollections();
     createdUser = await httpService.createUser(newTestUsers[0]);
     assert.isNotNull(createdUser);
   });
@@ -82,7 +83,7 @@ suite("plant api test", () => {
 
   test("get all for user - fail, bad userId", async () => {
     try {
-      const foundPlants = await httpService.getAllPlantsForUser("bad id");
+      await httpService.getAllPlantsForUser("bad id");
       assert.fail("expected 404 error, but request succeeded");
     } catch (error) {
       assert.equal(error.response.status, 404, "expected HTTP 404 Not Found");
@@ -90,11 +91,11 @@ suite("plant api test", () => {
   });
 
   test("update - success", async () => {
-    const newPlant = await httpService.createPlantForUser(createdUser._id, newTestPlants[0]);
-    assert.isNotNull(newPlant);
-    newPlant.commonName = "Monstera";
+    const createdPlant = await httpService.createPlantForUser(createdUser._id, newTestPlants[0]);
+    assert.isNotNull(createdPlant);
+    createdPlant.commonName = "Monstera";
 
-    const updatedPlant = await httpService.updatePlant(newPlant);
+    const updatedPlant = await httpService.updatePlant(createdPlant);
     assert.equal(updatedPlant.commonName, "Monstera");
   });
 
@@ -108,13 +109,13 @@ suite("plant api test", () => {
   });
 
   test("delete by id - success", async () => {
-    const newPlant = await httpService.createPlantForUser(createdUser._id, newTestPlants[0]);
-    assert.isNotNull(newPlant);
-    const foundPlant = await httpService.getPlantById(newPlant._id);
+    const createdPlant = await httpService.createPlantForUser(createdUser._id, newTestPlants[0]);
+    assert.isNotNull(createdPlant);
+    const foundPlant = await httpService.getPlantById(createdPlant._id);
     assert.isNotNull(foundPlant);
-    await httpService.deletePlant(newPlant._id);
+    await httpService.deletePlant(createdPlant._id);
     try {
-      await httpService.getPlantById(newPlant._id);
+      await httpService.getPlantById(createdPlant._id);
       assert.fail("expected 404 error, but request succeeded");
     } catch (error) {
       assert.equal(error.response.status, 404, "expected HTTP 404 Not Found");
@@ -133,8 +134,8 @@ suite("plant api test", () => {
   test("delete all - success", async () => {
     for (let i = 0; i < newTestPlants.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      const newPlant = await httpService.createPlantForUser(createdUser._id, newTestPlants[i]);
-      assert.isNotNull(newPlant);
+      const createdPlant = await httpService.createPlantForUser(createdUser._id, newTestPlants[i]);
+      assert.isNotNull(createdPlant);
     }
     let foundPlants = await httpService.getAllPlants();
     assert.equal(foundPlants.length, newTestPlants.length);
