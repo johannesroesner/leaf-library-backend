@@ -8,6 +8,7 @@ it also serves as my project assigment for the *Advanced Fullstack* course.
     - [User](#user)
     - [Plant](#plant)
     - [Collection](#collection)
+- [ API ](#api)
 - [Concepts](#concepts)
     - [Data Model](#data-model)
     - [System View](#system-view)
@@ -74,6 +75,13 @@ export interface Collection {
   plantIds: Plant["_id"][];
 }
 ```
+## API
+The *Leaf Library Backend* primarily serves as an API interface for the upcoming Svelte frontend application (to be developed).  
+The API is secured with JWT authentication, and an interactive API documentation is available at:
+
+[http://localhost:3000/documentation](http://localhost:3000/documentation)
+
+For instructions on how to build and run the project locally, see the [Run Local](#run-local) section.
 
 ## Concepts
 
