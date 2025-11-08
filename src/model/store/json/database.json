@@ -1,71 +1,21 @@
 {
   "users": [
     {
-      "email": "one@admin.com",
-      "firstName": "admin",
-      "secondName": "one",
-      "password": "one123!",
-      "_id": "ff176d77-a018-45b2-971b-019575dcd627",
-      "aboutMe": null,
-      "imageUrl": null,
-      "role": "admin"
-    },
-    {
-      "email": "two@admin.com",
-      "firstName": "admin",
-      "secondName": "two",
-      "password": "two123!",
-      "_id": "d83ed442-462b-4c1b-8058-2a7aabdd2c88",
-      "aboutMe": null,
-      "imageUrl": null,
-      "role": "admin"
-    },
-    {
-      "email": "sheldon.cooper@caltechmail.com",
-      "firstName": "Sheldon",
+      "firstName": "Test",
       "secondName": "Cooper",
+      "email": "sheldon.cooper@caltechmail.com",
+      "aboutMe": "test",
+      "_id": "41c9241d-fe89-4a52-9e26-920db7de4625",
+      "role": "sheldon.cooper@caltechmail.com",
       "password": "Bazinga123!",
-      "_id": "440be2fc-8bac-4762-8bd1-46973eceed47",
-      "aboutMe": null,
-      "imageUrl": null,
-      "role": "default"
-    },
-    {
-      "email": "leonard.hofstadter@physicsmail.org",
-      "firstName": "Leonard",
-      "secondName": "Hofstadter",
-      "password": "Roommate456!",
-      "_id": "459e370d-dc7a-4fed-81ab-f9bd722f27e4",
-      "aboutMe": null,
-      "imageUrl": null,
-      "role": "default"
-    },
-    {
-      "email": "howard.wolowitz@aerospacehub.net",
-      "firstName": "Howard",
-      "secondName": "Wolowitz",
-      "password": "Rocket789!",
-      "_id": "58842e2c-05e3-4391-9eb6-c5c1d0743dd3",
-      "aboutMe": null,
-      "imageUrl": null,
-      "role": "default"
-    },
-    {
-      "email": "raj.koothrappali@cosmosmail.io",
-      "firstName": "Raj",
-      "secondName": "Koothrappali",
-      "password": "Astro321!",
-      "_id": "889996f7-3b05-4c49-842b-d387636f5ad9",
-      "aboutMe": null,
-      "imageUrl": null,
-      "role": "default"
+      "imageUrl": null
     },
     {
       "email": "admin@admin.com",
       "firstName": "admin",
       "secondName": "admin",
       "password": "admin",
-      "_id": "97a8ab4b-2aac-484f-9a93-fec4419f191d",
+      "_id": "e75015dc-52dc-4f8b-b411-85b9d48cf2a5",
       "aboutMe": null,
       "imageUrl": null,
       "role": "admin"
@@ -75,7 +25,7 @@
       "firstName": "admin",
       "secondName": "admin",
       "password": "admin",
-      "_id": "0fd68701-c108-4afd-b3c9-850254d5bb37",
+      "_id": "32094167-d7fb-4c23-a32c-46dea6e4591c",
       "aboutMe": null,
       "imageUrl": null,
       "role": "admin"
@@ -85,7 +35,7 @@
       "firstName": "admin",
       "secondName": "admin",
       "password": "admin",
-      "_id": "9a79a4cd-796b-4761-a224-cb8064393a1f",
+      "_id": "8a6a0c50-ea9e-454b-b308-f6c1ee00ed14",
       "aboutMe": null,
       "imageUrl": null,
       "role": "admin"
@@ -95,7 +45,7 @@
       "firstName": "admin",
       "secondName": "admin",
       "password": "admin",
-      "_id": "505c94ec-3ea2-4f57-b699-7f5c2fd78f26",
+      "_id": "a1dc2d22-ddce-4d84-9132-9c1c7c2bac0e",
       "aboutMe": null,
       "imageUrl": null,
       "role": "admin"
@@ -105,7 +55,7 @@
       "firstName": "admin",
       "secondName": "admin",
       "password": "admin",
-      "_id": "fbfc50a7-208e-414c-a13d-7a2eee48c2e8",
+      "_id": "c6a852b9-8e04-45c7-907f-794f6728024f",
       "aboutMe": null,
       "imageUrl": null,
       "role": "admin"
@@ -115,7 +65,7 @@
       "firstName": "admin",
       "secondName": "admin",
       "password": "admin",
-      "_id": "c8ea9013-950d-4d84-add5-02e41789c28f",
+      "_id": "32a36ff8-31a0-4263-90e8-54737efe3832",
       "aboutMe": null,
       "imageUrl": null,
       "role": "admin"
@@ -125,7 +75,7 @@
       "firstName": "admin",
       "secondName": "admin",
       "password": "admin",
-      "_id": "0985db94-4735-4651-b088-6561aaaaf88e",
+      "_id": "652b75ae-b465-40f3-afc2-a89cb12fc803",
       "aboutMe": null,
       "imageUrl": null,
       "role": "admin"
@@ -135,31 +85,84 @@
       "firstName": "admin",
       "secondName": "admin",
       "password": "admin",
-      "_id": "78f7edd3-f761-47df-9196-9c3c3e1fdccb",
-      "aboutMe": null,
-      "imageUrl": null,
-      "role": "admin"
-    },
-    {
-      "email": "admin@admin.com",
-      "firstName": "admin",
-      "secondName": "admin",
-      "password": "admin",
-      "_id": "2a393569-2c52-48db-89a2-eeb426c1a2d9",
+      "_id": "1dd12fd6-7e58-4aa9-8fab-ca61d6734d02",
       "aboutMe": null,
       "imageUrl": null,
       "role": "admin"
     }
   ],
-  "plants": [],
+  "plants": [
+    {
+      "commonName": "Sunflower",
+      "scientificName": "Helianthus annuus",
+      "type": "Flower",
+      "biome": "Meadow",
+      "imageUrls": [
+        "https://example.com/sunflower.jpg"
+      ],
+      "note": "Grows tall and loves sunlight",
+      "latitude": 48.8566,
+      "longitude": 2.3522,
+      "_id": "81e4aa17-0fa4-42bf-afc6-c857b6e6d06a",
+      "userId": "41c9241d-fe89-4a52-9e26-920db7de4625",
+      "date": "2025-11-08T11:03:40.375Z"
+    },
+    {
+      "commonName": "Oak Tree",
+      "scientificName": "Quercus robur",
+      "type": "Tree",
+      "biome": "Forest",
+      "imageUrls": [
+        "https://example.com/oak.jpg"
+      ],
+      "note": "Can live for hundreds of years",
+      "latitude": 51.5074,
+      "longitude": -0.1278,
+      "_id": "64f37deb-0c72-4785-90ff-03f4635b384b",
+      "userId": "41c9241d-fe89-4a52-9e26-920db7de4625",
+      "date": "2025-11-08T11:03:40.379Z"
+    },
+    {
+      "commonName": "Water Lily",
+      "scientificName": "Nymphaea alba",
+      "type": "Aquatic Plant",
+      "biome": "Pond",
+      "imageUrls": [
+        "https://example.com/waterlily.jpg"
+      ],
+      "note": "Floats on water, blooms in summer",
+      "latitude": 45.4215,
+      "longitude": -75.6972,
+      "_id": "c7e22a14-2a62-4a5a-9f2b-096326edc85c",
+      "userId": "41c9241d-fe89-4a52-9e26-920db7de4625",
+      "date": "2025-11-08T11:03:40.380Z"
+    },
+    {
+      "commonName": "Ivy",
+      "scientificName": "Hedera helix",
+      "type": "Climber",
+      "biome": "Urban",
+      "imageUrls": [
+        "https://example.com/ivy.jpg"
+      ],
+      "note": "Climbs walls and fences",
+      "latitude": 40.7128,
+      "longitude": -74.006,
+      "_id": "cd3368d9-e206-4191-a1f5-2d96946b87d4",
+      "userId": "41c9241d-fe89-4a52-9e26-920db7de4625",
+      "date": "2025-11-08T11:03:40.381Z"
+    }
+  ],
   "collections": [
     {
-      "name": "hallo",
-      "description": "test",
-      "_id": "70df37df-1f23-4552-9c67-48a913ad7628",
-      "plantIds": [],
-      "userId": "440be2fc-8bac-4762-8bd1-46973eceed47",
-      "imageUrl": null
+      "name": "Summer Garden",
+      "description": "A collection of my favorite summer plants",
+      "imageUrl": null,
+      "_id": "07523f26-a4bc-475e-9a3e-588a47dcc75e",
+      "userId": "41c9241d-fe89-4a52-9e26-920db7de4625",
+      "plantIds": [
+        "81e4aa17-0fa4-42bf-afc6-c857b6e6d06a"
+      ]
     }
   ]
 }

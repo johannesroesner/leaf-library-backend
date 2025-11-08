@@ -4,6 +4,7 @@ import { gardenController } from "./controller/garden-controller.js";
 import { plantController } from "./controller/plant-controller.js";
 import { collectionController } from "./controller/collection-controller.js";
 import { adminController } from "./controller/admin-controller.js";
+import { profileController } from "./controller/profile-controller.js";
 
 export const webRoutes: ServerRoute[] = [
   // account/login routes
@@ -124,6 +125,28 @@ export const webRoutes: ServerRoute[] = [
     method: "GET",
     path: "/user/{userId}/delete",
     options: adminController.deleteUser,
+  },
+
+  // profile routes
+  {
+    method: "GET",
+    path: "/profile",
+    options: profileController.index,
+  },
+  {
+    method: "POST",
+    path: "/user/{userId}/update",
+    options: profileController.updateProfile,
+  },
+  {
+    method: "POST",
+    path: "/user/{userId}/uploadImage",
+    options: profileController.uploadImage,
+  },
+  {
+    method: "GET",
+    path: "/user/{userId}/deleteImage",
+    options: profileController.deleteImage,
   },
 
   // route for static resources

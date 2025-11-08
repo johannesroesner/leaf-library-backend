@@ -1,11 +1,11 @@
 <div class="card">
   <div class="card-image">
     <figure class="image is-256x256">
-      <img src={{collection.imageUrl}}>
+      <img src={{user.imageUrl}}>
     </figure>
   </div>
   <div class="card-content">
-    <form action="/collection/{{collection._id}}/uploadImage" method="POST" enctype="multipart/form-data">
+    <form action="/user/{{user._id}}/uploadImage" method="POST" enctype="multipart/form-data">
       <div id="file-select" class="file has-name is-fullwidth">
         <label class="file-label"> <input class="file-input" name="imageFile" type="file" name="resume" accept="image/png, image/jpeg">
           <span class="file-cta">
@@ -19,8 +19,8 @@
           <span class="file-name"></span>
         </label>
         <button type="submit" class="button is-primary">Upload</button>
-        {{#if collection.imageUrl}}
-          <a id="delete" class="button is-danger" href="/collection/{{collection._id}}/deleteImage">Delete</a>
+        {{#if user.imageUrl}}
+          <a id="delete" class="button is-danger" href="/user/{{user._id}}/deleteImage">Delete</a>
         {{/if}}
       </div>
     </form>

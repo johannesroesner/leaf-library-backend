@@ -124,6 +124,10 @@ export const collectionController: Record<string, RouteOptions> = {
         const file = payload.imageFile;
 
         if (Object.keys(file).length > 0) {
+          const oldImageUrl = collection.imageUrl;
+          if (oldImageUrl && oldImageUrl !== "") {
+            await imageStore.deleteImage(oldImageUrl);
+          }
           const url = await imageStore.uploadImage(file);
           collection.imageUrl = url;
           await database.collectionStore.update(collection);
