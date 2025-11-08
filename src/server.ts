@@ -108,7 +108,7 @@ const init = async () => {
   server.route(apiRoutes);
 
   // dataBase init
-  await database.init("json");
+  await database.init("mongo");
 
   // start server
   await server.start();

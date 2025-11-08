@@ -1,10 +1,15 @@
 import dotenv from "dotenv";
+import { Types } from "mongoose";
 import type { NewUser, User } from "./interface/user.js";
 import type { NewPlant, Plant } from "./interface/plant.js";
 import type { NewCollection, Collection } from "./interface/collection.js";
 import { userJsonStore } from "./store/json/user-json-store.js";
 import { plantJsonStore } from "./store/json/plant-json-store.js";
 import { collectionJsonStore } from "./store/json/collection-json-store.js";
+import { userMogoStore } from "./store/mongo/user-mogo-store.js";
+import { plantMongoStore } from "./store/mongo/plant-mongo-store.js";
+import { connectMongo } from "./store/mongo/connection.js";
+import { collectionMongoStore } from "./store/mongo/collection-mongo-store.js";
 
 type StoreType = "json" | "mongo";
 
@@ -70,9 +75,9 @@ export interface CollectionStore {
 
   deleteById(collectionId: Collection["_id"]): Promise<Collection | null>;
 
-  addPlantToCollection(collectionId: Collection["_id"], plantId: Plant["_id"]): Promise<Collection | null>;
+  addPlantToCollection(collectionId: Collection["_id"], plantId: string | Types.ObjectId): Promise<Collection | null>;
 
-  deletePlantFromCollection(collectionId: Collection["_id"], plantId: Plant["_id"]): Promise<Collection | null>;
+  deletePlantFromCollection(collectionId: Collection["_id"], plantId: string | Types.ObjectId): Promise<Collection | null>;
 
   getAllPlantsForCollection(collectionId: Collection["_id"]): Promise<Plant[] | null>;
 }
@@ -96,6 +101,12 @@ export const database: Database = {
       await this.userStore.initAdmins(adminList);
       this.plantStore = plantJsonStore;
       this.collectionStore = collectionJsonStore;
+    } else if (storeType === "mongo") {
+      connectMongo();
+      this.userStore = userMogoStore;
+      await this.userStore.initAdmins(adminList);
+      this.plantStore = plantMongoStore;
+      this.collectionStore = collectionMongoStore;
     } else {
       throw new Error(`unknown storeType ${storeType}`);
     }

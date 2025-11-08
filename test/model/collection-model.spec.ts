@@ -32,7 +32,7 @@ suite("collection model tests", () => {
     const createdCollection = await database.collectionStore.createForUser(createdUser._id, newTestCollections[0]);
     assert.isNotNull(createdCollection);
     assert.equal(newTestCollections[0].name, createdCollection.name);
-    assert.equal(createdUser._id, createdCollection.userId);
+    assert.deepEqual(createdUser._id, createdCollection.userId);
   });
 
   test("create - fail, bad userId", async () => {
@@ -142,7 +142,7 @@ suite("collection model tests", () => {
     const createdCollectionWithPlant = await database.collectionStore.addPlantToCollection(createdCollection._id, createdPlants[0]._id);
     assert.isNotNull(createdCollectionWithPlant);
 
-    assert.equal(createdCollectionWithPlant.plantIds[0], createdPlants[0]._id);
+    assert.deepEqual(createdCollectionWithPlant.plantIds[0], createdPlants[0]._id);
   });
 
   test("add one plant to collection - fail, bad collectionId", async () => {
@@ -179,7 +179,7 @@ suite("collection model tests", () => {
     const createdCollectionWithPlant = await database.collectionStore.addPlantToCollection(createdCollection._id, createdPlants[0]._id);
     assert.isNotNull(createdCollectionWithPlant);
 
-    assert.equal(createdCollectionWithPlant.plantIds[0], createdPlants[0]._id);
+    assert.deepEqual(createdCollectionWithPlant.plantIds[0], createdPlants[0]._id);
 
     await database.plantStore!.deleteById(createdPlants[0]._id);
 
@@ -195,7 +195,7 @@ suite("collection model tests", () => {
     const createdCollectionWithPlant = await database.collectionStore.addPlantToCollection(createdCollection._id, createdPlants[0]._id);
     assert.isNotNull(createdCollectionWithPlant);
 
-    assert.equal(createdCollectionWithPlant.plantIds[0], createdPlants[0]._id);
+    assert.deepEqual(createdCollectionWithPlant.plantIds[0], createdPlants[0]._id);
 
     const createdCollectionWithoutPlant = await database.collectionStore.deletePlantFromCollection(createdCollectionWithPlant._id, createdCollectionWithPlant.plantIds[0]);
     assert.isNotNull(createdCollectionWithoutPlant);

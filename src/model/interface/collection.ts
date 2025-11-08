@@ -1,4 +1,4 @@
-import type { User } from "./user.js";
+import { Types } from "mongoose";
 import type { Plant } from "./plant.js";
 
 export interface Collection {
@@ -6,8 +6,8 @@ export interface Collection {
   name: string;
   description: string;
   imageUrl: string | null;
-  userId: User["_id"];
-  plantIds: Plant["_id"][];
+  userId: string | Types.ObjectId;
+  plantIds: (string | Types.ObjectId)[];
 }
 
 export type NewCollection = Omit<Collection, "_id" | "userId" | "plantIds">;

@@ -1,65 +1,6 @@
 {
   "users": [
-    {
-      "email": "one@admin.com",
-      "firstName": "admin",
-      "secondName": "one",
-      "password": "one123!",
-      "_id": "d58eccda-f39e-4707-8b9b-990052b00106",
-      "aboutMe": null,
-      "imageUrl": null,
-      "role": "admin"
-    },
-    {
-      "email": "two@admin.com",
-      "firstName": "admin",
-      "secondName": "two",
-      "password": "two123!",
-      "_id": "133c9633-365c-4556-8e23-03e9c9ce72c5",
-      "aboutMe": null,
-      "imageUrl": null,
-      "role": "admin"
-    },
-    {
-      "email": "sheldon.cooper@caltechmail.com",
-      "firstName": "Sheldon",
-      "secondName": "Cooper",
-      "password": "Bazinga123!",
-      "_id": "14e3c255-de38-4e13-9842-85de3cf3fda3",
-      "aboutMe": null,
-      "imageUrl": null,
-      "role": "default"
-    },
-    {
-      "email": "leonard.hofstadter@physicsmail.org",
-      "firstName": "Leonard",
-      "secondName": "Hofstadter",
-      "password": "Roommate456!",
-      "_id": "bd69406f-0266-40bc-824b-ba26408072e8",
-      "aboutMe": null,
-      "imageUrl": null,
-      "role": "default"
-    },
-    {
-      "email": "howard.wolowitz@aerospacehub.net",
-      "firstName": "Howard",
-      "secondName": "Wolowitz",
-      "password": "Rocket789!",
-      "_id": "ed9578d6-8973-4795-844f-9482189c3fdc",
-      "aboutMe": null,
-      "imageUrl": null,
-      "role": "default"
-    },
-    {
-      "email": "raj.koothrappali@cosmosmail.io",
-      "firstName": "Raj",
-      "secondName": "Koothrappali",
-      "password": "Astro321!",
-      "_id": "279e8835-5cad-4a98-ad71-98ffe0875d69",
-      "aboutMe": null,
-      "imageUrl": null,
-      "role": "default"
-    }
+    {}
   ],
   "plants": [],
   "collections": []
