@@ -61,7 +61,7 @@ export const collectionController: Record<string, RouteOptions> = {
       const addedPlants = await database.collectionStore.getAllPlantsForCollection(collectionId);
       const plantIdsInCollection = addedPlants.map((p) => p._id.toString());
 
-      const allPlants = await database.plantStore.getAll();
+      const allPlants = await database.plantStore.getAllForUser(collection.userId.toString());
       const addablePlants = allPlants.filter((p) => !plantIdsInCollection.includes(p._id.toString()));
       const viewData = {
         title: "Leaf Library - Collection Details",
