@@ -25,6 +25,7 @@ jobs:
 
       - name: create .env file
         run: |
+          echo "MODE=development" >> .env
           echo "COOKIE_NAME=testName" >> .env
           echo "COOKIE_PASSWORD=testPassword" >> .env
           echo "PORT=3000" >> .env

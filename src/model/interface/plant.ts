@@ -1,4 +1,4 @@
-import type { User } from "./user.js";
+import { Types } from "mongoose";
 
 export const PlantTypeArray = ["Tree", "Flower", "Fern", "Moss", "Grass", "Aquatic Plant", "Climber", "Other"] as const;
 
@@ -17,9 +17,9 @@ export interface Plant {
   imageUrls: string[] | null;
   note: string | null;
   date: Date;
-  latitude: Number;
-  longitude: Number;
-  userId: User["_id"];
+  latitude: number;
+  longitude: number;
+  userId: string | Types.ObjectId;
 }
 
 export type NewPlant = Omit<Plant, "_id" | "userId" | "date">;

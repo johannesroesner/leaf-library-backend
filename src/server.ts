@@ -21,6 +21,9 @@ if (result.eror) {
   console.log(result.error);
 }
 
+// set application mode
+const mode = process.env.MODE;
+
 // set swagger options
 const swaggerOptions = {
   info: {
@@ -108,7 +111,11 @@ const init = async () => {
   server.route(apiRoutes);
 
   // dataBase init
-  await database.init("json");
+  if (mode === "development") {
+    await database.init("json");
+  } else if (mode === "production") {
+    await database.init("mongo");
+  }
 
   // start server
   await server.start();

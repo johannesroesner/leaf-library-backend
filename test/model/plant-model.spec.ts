@@ -22,7 +22,7 @@ suite("plant model tests", () => {
     const createdPlant = await database.plantStore.createForUser(createdUser._id, newTestPlants[0]);
     assert.isNotNull(createdPlant);
     assert.equal(newTestPlants[0].type, createdPlant.type);
-    assert.equal(createdUser._id, createdPlant.userId);
+    assert.deepEqual(createdUser._id, createdPlant.userId);
   });
 
   test("create - fail, bad userId", async () => {
