@@ -103,7 +103,18 @@ export const webRoutes: ServerRoute[] = [
     path: "/collection/{collectionId}/deletePlant/{plantId}",
     options: collectionController.deletePlantFromCollection,
   },
+  {
+    method: "POST",
+    path: "/collection/{collectionId}/uploadImage",
+    options: collectionController.uploadImage,
+  },
+  {
+    method: "GET",
+    path: "/collection/{collectionId}/deleteImage",
+    options: collectionController.deleteImage,
+  },
 
+  // admin routes
   {
     method: "GET",
     path: "/admin",

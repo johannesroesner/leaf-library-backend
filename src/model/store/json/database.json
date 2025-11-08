@@ -59,8 +59,107 @@
       "aboutMe": null,
       "imageUrl": null,
       "role": "default"
+    },
+    {
+      "email": "admin@admin.com",
+      "firstName": "admin",
+      "secondName": "admin",
+      "password": "admin",
+      "_id": "97a8ab4b-2aac-484f-9a93-fec4419f191d",
+      "aboutMe": null,
+      "imageUrl": null,
+      "role": "admin"
+    },
+    {
+      "email": "admin@admin.com",
+      "firstName": "admin",
+      "secondName": "admin",
+      "password": "admin",
+      "_id": "0fd68701-c108-4afd-b3c9-850254d5bb37",
+      "aboutMe": null,
+      "imageUrl": null,
+      "role": "admin"
+    },
+    {
+      "email": "admin@admin.com",
+      "firstName": "admin",
+      "secondName": "admin",
+      "password": "admin",
+      "_id": "9a79a4cd-796b-4761-a224-cb8064393a1f",
+      "aboutMe": null,
+      "imageUrl": null,
+      "role": "admin"
+    },
+    {
+      "email": "admin@admin.com",
+      "firstName": "admin",
+      "secondName": "admin",
+      "password": "admin",
+      "_id": "505c94ec-3ea2-4f57-b699-7f5c2fd78f26",
+      "aboutMe": null,
+      "imageUrl": null,
+      "role": "admin"
+    },
+    {
+      "email": "admin@admin.com",
+      "firstName": "admin",
+      "secondName": "admin",
+      "password": "admin",
+      "_id": "fbfc50a7-208e-414c-a13d-7a2eee48c2e8",
+      "aboutMe": null,
+      "imageUrl": null,
+      "role": "admin"
+    },
+    {
+      "email": "admin@admin.com",
+      "firstName": "admin",
+      "secondName": "admin",
+      "password": "admin",
+      "_id": "c8ea9013-950d-4d84-add5-02e41789c28f",
+      "aboutMe": null,
+      "imageUrl": null,
+      "role": "admin"
+    },
+    {
+      "email": "admin@admin.com",
+      "firstName": "admin",
+      "secondName": "admin",
+      "password": "admin",
+      "_id": "0985db94-4735-4651-b088-6561aaaaf88e",
+      "aboutMe": null,
+      "imageUrl": null,
+      "role": "admin"
+    },
+    {
+      "email": "admin@admin.com",
+      "firstName": "admin",
+      "secondName": "admin",
+      "password": "admin",
+      "_id": "78f7edd3-f761-47df-9196-9c3c3e1fdccb",
+      "aboutMe": null,
+      "imageUrl": null,
+      "role": "admin"
+    },
+    {
+      "email": "admin@admin.com",
+      "firstName": "admin",
+      "secondName": "admin",
+      "password": "admin",
+      "_id": "2a393569-2c52-48db-89a2-eeb426c1a2d9",
+      "aboutMe": null,
+      "imageUrl": null,
+      "role": "admin"
     }
   ],
   "plants": [],
-  "collections": []
+  "collections": [
+    {
+      "name": "hallo",
+      "description": "test",
+      "_id": "70df37df-1f23-4552-9c67-48a913ad7628",
+      "plantIds": [],
+      "userId": "440be2fc-8bac-4762-8bd1-46973eceed47",
+      "imageUrl": null
+    }
+  ]
 }

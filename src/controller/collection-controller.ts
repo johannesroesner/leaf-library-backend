@@ -1,9 +1,10 @@
 import { Request, ResponseToolkit, RouteOptions } from "@hapi/hapi";
-import Joi from "joi";
+import Joi, { date } from "joi";
 import { database } from "../model/database.js";
 import { NewCollectionSpec, NewPlantSpec } from "../model/joi-schema.js";
 import { Credential } from "./account-controller.js";
-import { Collection, NewCollection } from "../model/interface/collection";
+import type { Collection, NewCollection } from "../model/interface/collection.js";
+import { imageStore, ImageUploadPayload } from "../model/store/image-store.js";
 
 export const collectionController: Record<string, RouteOptions> = {
   index: {
@@ -111,6 +112,49 @@ export const collectionController: Record<string, RouteOptions> = {
 
       await database.collectionStore.deletePlantFromCollection(collectionId, plantId);
       return responseToolkit.redirect(`/collection/${collectionId}`);
+    },
+  },
+  uploadImage: {
+    handler: async function (request: Request, responseToolkit: ResponseToolkit) {
+      const { collectionId } = request.params;
+      const collection = await database.collectionStore.getById(collectionId);
+
+      try {
+        const payload = request.payload as ImageUploadPayload;
+        const file = payload.imageFile;
+
+        if (Object.keys(file).length > 0) {
+          const url = await imageStore.uploadImage(file);
+          collection.imageUrl = url;
+          await database.collectionStore.update(collection);
+        }
+        return responseToolkit.redirect(`/collection/${collection._id}`);
+      } catch (err) {
+        console.log(err);
+        return responseToolkit.redirect(`/collection/${collection._id}`);
+      }
+    },
+    payload: {
+      multipart: true,
+      output: "data",
+      maxBytes: 209715200,
+      parse: true,
+    },
+  },
+
+  deleteImage: {
+    handler: async function (request: Request, responseToolkit: ResponseToolkit) {
+      const { collectionId } = request.params;
+      const collection = await database.collectionStore.getById(collectionId);
+      try {
+        await imageStore.deleteImage(collection.imageUrl);
+        collection.imageUrl = null;
+        await database.collectionStore.update(collection);
+        return responseToolkit.redirect(`/collection/${collection._id}`);
+      } catch (err) {
+        console.log(err);
+        return responseToolkit.redirect(`/collection/${collection._id}`);
+      }
     },
   },
 };

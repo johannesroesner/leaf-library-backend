@@ -59,7 +59,7 @@ export const collectionJsonStore: CollectionStore = {
     if (index === -1) {
       return null;
     }
-    const collection: Collection = { ...newCollection, _id: v4(), userId: userId, plantIds: [] } as Collection;
+    const collection: Collection = { ...newCollection, _id: v4(), userId: userId, plantIds: [], imageUrl: null } as Collection;
     jsonFile.data.collections.push(collection);
     await jsonFile.write();
     return collection;
@@ -74,7 +74,6 @@ export const collectionJsonStore: CollectionStore = {
     }
     collection.plantIds = jsonFile.data.collections[index].plantIds;
     collection.userId = jsonFile.data.collections[index].userId;
-    collection.imageUrl = jsonFile.data.collections[index].imageUrl;
     jsonFile.data.collections[index] = collection;
     await jsonFile.write();
     return collection;
