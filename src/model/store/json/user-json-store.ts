@@ -64,6 +64,9 @@ export const userJsonStore: UserStore = {
     if (index === -1) {
       return null;
     }
+    user._id = jsonFile.data.users[index]._id;
+    user.role = jsonFile.data.users[index].role;
+    user.password = jsonFile.data.users[index].password;
     jsonFile.data.users[index] = user;
     await jsonFile.write();
     return user;

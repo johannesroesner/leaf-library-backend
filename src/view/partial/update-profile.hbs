@@ -1,0 +1,29 @@
+<div class="box">
+  <p class="title">Update Profile</p>
+  <form action="/user/{{user._id}}/update" method="POST">
+
+    <div class="field">
+      <label class="label">First Name</label>
+      <input class="input" type="text" name="firstName" placeholder="Enter first name" value="{{user.firstName}}" required />
+    </div>
+
+    <div class="field">
+      <label class="label">Second Name</label>
+      <input class="input" type="text" name="secondName" placeholder="Enter second name" value="{{user.secondName}}" required />
+    </div>
+
+    <div class="field">
+      <label class="label">E-Mail</label>
+      <input class="input" type="text" name="email" placeholder="Enter email" value="{{user.email}}" required />
+    </div>
+
+    <div class="field">
+      <label class="label">About Me</label>
+      <input class="input" type="text" name="aboutMe" placeholder="Enter an about me text" value="{{user.aboutMe}}" />
+    </div>
+
+    <div class="field">
+      <button class="button is-primary" type="submit">Update Profile</button>
+    </div>
+  </form>
+</div>

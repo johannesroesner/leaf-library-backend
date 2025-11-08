@@ -22,6 +22,9 @@ export const UserSpec = NewUserSpec.keys({
   imageUrl: Joi.string().allow(null).example("www.example.com/sheldon-image.jpg"),
 }).label("UserDetails");
 
+// extra update spec for user, to hide the password
+export const UserUpdateSpec = UserSpec.fork(["password"], (schema) => schema.optional());
+
 export const UserSpecPlus = UserSpec.keys({
   _id: IdSpec,
   __v: Joi.number(),
