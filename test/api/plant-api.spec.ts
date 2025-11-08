@@ -2,7 +2,7 @@ import { assert } from "chai";
 import { suite, test, setup } from "mocha";
 // @ts-ignore
 import { httpService } from "./http-service.js";
-import { newTestPlants, newTestUsers } from "../fixture.js";
+import { newAuthenticatedUser, newTestPlants, newTestUsers } from "../fixture.js";
 import type { User } from "../../src/model/interface/user.js";
 
 suite("plant api test", () => {
@@ -10,9 +10,15 @@ suite("plant api test", () => {
   let createdUser: User;
 
   setup(async () => {
-    await httpService.deleteAllUsers();
+    httpService.clearAuth();
+    let authenticatedUser = await httpService.createUser(newAuthenticatedUser);
+    assert.isNotNull(authenticatedUser);
+    await httpService.authenticate(authenticatedUser);
     await httpService.deleteAllPlants();
     await httpService.deleteAllCollections();
+    await httpService.deleteAllUsers();
+    authenticatedUser = await httpService.createUser(newAuthenticatedUser);
+    await httpService.authenticate(authenticatedUser);
     createdUser = await httpService.createUser(newTestUsers[0]);
     assert.isNotNull(createdUser);
   });

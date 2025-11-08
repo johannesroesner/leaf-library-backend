@@ -6,17 +6,36 @@ import dotenv from "dotenv";
 import { fileURLToPath } from "node:url";
 import * as path from "node:path";
 import Handlebars from "handlebars";
+import HapiSwagger from "hapi-swagger";
 import Joi from "joi";
+import * as jwt from "hapi-auth-jwt2";
 import { webRoutes } from "./web-routes.js";
 import { database } from "./model/database.js";
-import { validate } from "./controller/account-controller.js";
 import { apiRoutes } from "./api-routes.js";
+import { sessionValidate } from "./controller/account-controller.js";
+import { jwtValidate } from "./api/jwt-utils.js";
 
 // check if .env file is present
 const result: any = dotenv.config();
 if (result.eror) {
   console.log(result.error);
 }
+
+// set swagger options
+const swaggerOptions = {
+  info: {
+    title: "Leaf Library API",
+    version: "0.1",
+  },
+  securityDefinitions: {
+    jwt: {
+      type: "apiKey",
+      name: "Authorization",
+      in: "header",
+    },
+  },
+  security: [{ jwt: [] }],
+};
 
 // get folder path
 const __filename: string = fileURLToPath(import.meta.url);
@@ -30,7 +49,16 @@ const init = async () => {
   });
 
   // register plugins
-  await server.register([Vision, Inert, Cookie]);
+  await server.register([
+    Vision,
+    Inert,
+    Cookie,
+    { plugin: jwt },
+    {
+      plugin: HapiSwagger,
+      options: swaggerOptions,
+    },
+  ]);
 
   // define default auth and cookie
   server.auth.strategy("session", "cookie", {
@@ -40,9 +68,15 @@ const init = async () => {
       isSecure: false,
     },
     redirectTo: "/",
-    validate: validate,
+    validate: sessionValidate,
   });
   server.auth.default("session");
+
+  server.auth.strategy("jwt", "jwt", {
+    key: process.env.COOKIE_PASSWORD,
+    validate: jwtValidate,
+    verifyOptions: { algorithms: ["HS256"] },
+  });
 
   // register template engine
   server.views({

@@ -4,6 +4,13 @@ import { plantApi } from "./api/plant-api.js";
 import { collectionApi } from "./api/collection-api.js";
 
 export const apiRoutes: ServerRoute[] = [
+  // authentication route
+  {
+    method: "POST",
+    path: "/api/user/authenticate",
+    options: userApi.authenticate,
+  },
+
   // user api routes
   {
     method: "GET",

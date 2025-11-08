@@ -8,7 +8,9 @@ import { NewPlant, Plant } from "../model/interface/plant";
 
 export const plantApi: Record<string, RouteOptions> = {
   getAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const foundPlants = await database.plantStore.getAll();
@@ -24,7 +26,9 @@ export const plantApi: Record<string, RouteOptions> = {
   },
 
   getOneById: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const foundPlant = await database.plantStore.getById(request.params.plantId);
@@ -44,7 +48,9 @@ export const plantApi: Record<string, RouteOptions> = {
   },
 
   getAllForUser: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const foundPlants = await database.plantStore.getAllForUser(request.params.userId);
@@ -64,7 +70,9 @@ export const plantApi: Record<string, RouteOptions> = {
   },
 
   createForUserId: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const createdPlant = await database.plantStore.createForUser(request.params.userId, request.payload as NewPlant);
@@ -84,7 +92,9 @@ export const plantApi: Record<string, RouteOptions> = {
   },
 
   update: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const updatedPlant = await database.plantStore.update(request.payload as Plant);
@@ -104,7 +114,9 @@ export const plantApi: Record<string, RouteOptions> = {
   },
 
   deleteOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const deletedPlant = await database.plantStore.deleteById(request.params.plantId);
@@ -124,7 +136,9 @@ export const plantApi: Record<string, RouteOptions> = {
   },
 
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         await database.plantStore.deleteAll();

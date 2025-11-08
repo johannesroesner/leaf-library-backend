@@ -4,6 +4,14 @@ import { BiomeArray, PlantTypeArray } from "./interface/plant.js";
 // id schema
 export const IdSpec = Joi.alternatives().try(Joi.string(), Joi.object()).description("a valid id");
 
+// authentication schema
+export const AuthResponseSpec = Joi.object({
+  success: Joi.boolean().valid(true).required(),
+  name: Joi.string().required(),
+  token: Joi.string().required(),
+  _id: IdSpec,
+}).label("AuthResponse");
+
 // user schema
 export const UserCredentialSpec = Joi.object()
   .keys({

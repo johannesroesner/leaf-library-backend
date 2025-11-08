@@ -3,8 +3,9 @@ import Boom from "@hapi/boom";
 import Joi from "joi";
 import { database } from "../model/database.js";
 import { NewUser, User } from "../model/interface/user.js";
-import { IdSpec, NewUserSpec, UserArray, UserSpec, UserSpecPlus } from "../model/joi-schema.js";
+import { AuthResponseSpec, IdSpec, NewUserSpec, UserArray, UserSpec, UserSpecPlus } from "../model/joi-schema.js";
 import { validationError } from "../logger.js";
+import { createToken } from "./jwt-utils.js";
 
 export const userApi: Record<string, RouteOptions> = {
   create: {
@@ -28,7 +29,9 @@ export const userApi: Record<string, RouteOptions> = {
   },
 
   getAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const foundUsers = await database.userStore.getAll();
@@ -44,7 +47,9 @@ export const userApi: Record<string, RouteOptions> = {
   },
 
   getOneById: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const foundUser = await database.userStore.getById(request.params.userId);
@@ -64,7 +69,9 @@ export const userApi: Record<string, RouteOptions> = {
   },
 
   getOneByEmail: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const foundUser = await database.userStore.getByEmail(request.params.userEmail);
@@ -84,7 +91,9 @@ export const userApi: Record<string, RouteOptions> = {
   },
 
   update: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const updatedUser = await database.userStore.update(request.payload as User);
@@ -104,7 +113,9 @@ export const userApi: Record<string, RouteOptions> = {
   },
 
   deleteOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const deletedUser = await database.userStore.deleteById(request.params.userId);
@@ -124,7 +135,9 @@ export const userApi: Record<string, RouteOptions> = {
   },
 
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         await database.userStore.deleteAll();
@@ -137,5 +150,27 @@ export const userApi: Record<string, RouteOptions> = {
     description: "delete all users",
     notes: "delete all users at once",
     response: { schema: Joi.any().empty(), failAction: validationError },
+  },
+
+  authenticate: {
+    auth: false,
+    handler: async function (request: Request, responseToolkit: ResponseToolkit) {
+      const payload = request.payload as User;
+      try {
+        const user = (await database.userStore.getByEmail(payload.email)) as User;
+        if (!user) return Boom.unauthorized("user not found");
+        const passwordsMatch: boolean = payload.password === user.password;
+        if (!passwordsMatch) return Boom.unauthorized("invalid password");
+        const token = createToken(user);
+        return responseToolkit.response({ success: true, name: `${user.firstName} ${user.secondName}`, token: token, _id: user._id }).code(201);
+      } catch (err) {
+        return Boom.serverUnavailable("database error");
+      }
+    },
+    tags: ["api"],
+    description: "authenticate user",
+    notes: "authenticate a user to use the api",
+    validate: { payload: UserSpecPlus, failAction: validationError },
+    response: { schema: AuthResponseSpec, failAction: validationError },
   },
 };
