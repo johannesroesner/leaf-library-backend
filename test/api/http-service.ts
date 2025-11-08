@@ -9,6 +9,16 @@ export const httpService = {
   leafLibraryBackendUrl: serviceUrl,
 
   // user api
+  async authenticate(user) {
+    const response = await axios.post(`${this.leafLibraryBackendUrl}/api/user/authenticate`, user);
+    axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
+    return response.data;
+  },
+
+  async clearAuth() {
+    axios.defaults.headers.common.Authorization = "";
+  },
+
   async getAllUsers() {
     const response = await axios.get(`${this.leafLibraryBackendUrl}/api/user/all`);
     return response.data;

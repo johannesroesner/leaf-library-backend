@@ -77,7 +77,7 @@ export interface Credential {
   role: Role;
 }
 
-export const validate = async (request: Request, session: Session) => {
+export const sessionValidate = async (request: Request, session: Session) => {
   const user = await database.userStore.getById(session.id);
   if (!user) {
     return { isValid: false };

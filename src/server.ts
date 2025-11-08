@@ -7,10 +7,12 @@ import { fileURLToPath } from "node:url";
 import * as path from "node:path";
 import Handlebars from "handlebars";
 import Joi from "joi";
+import * as jwt from "hapi-auth-jwt2";
 import { webRoutes } from "./web-routes.js";
 import { database } from "./model/database.js";
-import { validate } from "./controller/account-controller.js";
 import { apiRoutes } from "./api-routes.js";
+import { sessionValidate } from "./controller/account-controller.js";
+import { jwtValidate } from "./api/jwt-utils.js";
 
 // check if .env file is present
 const result: any = dotenv.config();
@@ -30,7 +32,7 @@ const init = async () => {
   });
 
   // register plugins
-  await server.register([Vision, Inert, Cookie]);
+  await server.register([Vision, Inert, Cookie, { plugin: jwt }]);
 
   // define default auth and cookie
   server.auth.strategy("session", "cookie", {
@@ -40,9 +42,15 @@ const init = async () => {
       isSecure: false,
     },
     redirectTo: "/",
-    validate: validate,
+    validate: sessionValidate,
   });
   server.auth.default("session");
+
+  server.auth.strategy("jwt", "jwt", {
+    key: process.env.COOKIE_PASSWORD,
+    validate: jwtValidate,
+    verifyOptions: { algorithms: ["HS256"] },
+  });
 
   // register template engine
   server.views({

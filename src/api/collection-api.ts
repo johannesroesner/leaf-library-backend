@@ -8,7 +8,9 @@ import { Collection } from "../model/interface/collection";
 
 export const collectionApi: Record<string, RouteOptions> = {
   getAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const foundCollections = await database.collectionStore.getAll();
@@ -24,7 +26,9 @@ export const collectionApi: Record<string, RouteOptions> = {
   },
 
   getOneById: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const foundCollection = await database.collectionStore.getById(request.params.collectionId);
@@ -44,7 +48,9 @@ export const collectionApi: Record<string, RouteOptions> = {
   },
 
   getAllForUser: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const foundCollections = await database.collectionStore.getAllForUser(request.params.userId);
@@ -64,7 +70,9 @@ export const collectionApi: Record<string, RouteOptions> = {
   },
 
   createForUserId: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const createdCollection = await database.collectionStore.createForUser(request.params.userId, request.payload as Collection);
@@ -84,7 +92,9 @@ export const collectionApi: Record<string, RouteOptions> = {
   },
 
   update: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const updatedCollection = await database.collectionStore.update(request.payload as Collection);
@@ -104,7 +114,9 @@ export const collectionApi: Record<string, RouteOptions> = {
   },
 
   deleteOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const deletedCollection = await database.collectionStore.deleteById(request.params.collectionId);
@@ -124,7 +136,9 @@ export const collectionApi: Record<string, RouteOptions> = {
   },
 
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         await database.collectionStore.deleteAll();
@@ -140,7 +154,9 @@ export const collectionApi: Record<string, RouteOptions> = {
   },
 
   addPlantToCollection: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const collectionWithAddedPlant = await database.collectionStore.addPlantToCollection(request.params.collectionId, request.params.plantId);
@@ -160,7 +176,9 @@ export const collectionApi: Record<string, RouteOptions> = {
   },
 
   deletePlantFromCollection: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const collectionWithDeletedPlant = await database.collectionStore.deletePlantFromCollection(request.params.collectionId, request.params.plantId);
@@ -180,7 +198,9 @@ export const collectionApi: Record<string, RouteOptions> = {
   },
 
   getAllPlantsForCollection: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, responseToolkit: ResponseToolkit): Promise<ResponseObject | Boom.Boom> {
       try {
         const foundPlants = await database.collectionStore.getAllPlantsForCollection(request.params.collectionId);

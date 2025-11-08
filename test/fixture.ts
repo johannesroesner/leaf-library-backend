@@ -4,6 +4,13 @@ import { NewCollection } from "../src/model/interface/collection";
 
 export const serviceUrl: string = "http://localhost:3000";
 
+export const newAuthenticatedUser: NewUser = {
+  email: "authenticated@authenticated.com",
+  firstName: "authenticated",
+  secondName: "authenticated",
+  password: "authenticated!",
+};
+
 export const newTestAdmins: NewUser[] = [
   {
     email: "one@admin.com",

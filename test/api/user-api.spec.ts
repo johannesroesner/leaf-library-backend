@@ -2,15 +2,21 @@ import { assert } from "chai";
 import { suite, test, setup } from "mocha";
 // @ts-ignore
 import { httpService } from "./http-service.js";
-import { newTestUsers } from "../fixture.js";
+import { newAuthenticatedUser, newTestUsers } from "../fixture.js";
 
 suite("user api test", () => {
   const badPayload = Object();
 
   setup(async () => {
-    await httpService.deleteAllUsers();
+    httpService.clearAuth();
+    let createdUser = await httpService.createUser(newAuthenticatedUser);
+    assert.isNotNull(createdUser);
+    await httpService.authenticate(createdUser);
     await httpService.deleteAllPlants();
     await httpService.deleteAllCollections();
+    await httpService.deleteAllUsers();
+    createdUser = await httpService.createUser(newAuthenticatedUser);
+    await httpService.authenticate(createdUser);
   });
 
   test("create - success", async () => {
@@ -35,7 +41,7 @@ suite("user api test", () => {
       assert.isNotNull(createdUser);
     }
     const foundUsers = await httpService.getAllUsers();
-    assert.equal(foundUsers.length, newTestUsers.length);
+    assert.equal(foundUsers.length, newTestUsers.length + 1);
   });
 
   test("get by id - success", async () => {
@@ -120,11 +126,14 @@ suite("user api test", () => {
       assert.isNotNull(createdUser);
     }
     let foundUsers = await httpService.getAllUsers();
-    assert.equal(foundUsers.length, newTestUsers.length);
+    assert.equal(foundUsers.length, newTestUsers.length + 1);
 
     await httpService.deleteAllUsers();
 
+    const createdUser = await httpService.createUser(newAuthenticatedUser);
+    assert.isNotNull(createdUser);
+    await httpService.authenticate(createdUser);
     foundUsers = await httpService.getAllUsers();
-    assert.equal(foundUsers.length, 0);
+    assert.equal(foundUsers.length, 1);
   });
 });
