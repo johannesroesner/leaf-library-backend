@@ -57,7 +57,6 @@ export const plantJsonStore: PlantStore = {
       return null;
     }
     plant.userId = jsonFile.data.plants[index].userId;
-    plant.imageUrls = jsonFile.data.plants[index].imageUrls;
     plant.date = jsonFile.data.plants[index].date;
 
     jsonFile.data.plants[index] = plant;

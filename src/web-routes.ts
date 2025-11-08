@@ -67,6 +67,16 @@ export const webRoutes: ServerRoute[] = [
     path: "/plant/{plantId}/update",
     options: plantController.updatePlant,
   },
+  {
+    method: "POST",
+    path: "/plant/{plantId}/uploadImage",
+    options: plantController.uploadImage,
+  },
+  {
+    method: "GET",
+    path: "/plant/{plantId}/deleteImage/{encodedImageUrl}",
+    options: plantController.deleteImage,
+  },
 
   // collection routes
   {
