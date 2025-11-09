@@ -108,7 +108,9 @@ const init = async () => {
   server.route(webRoutes);
 
   // register api routes
-  server.route(apiRoutes);
+  if (mode !== "production") {
+    server.route(apiRoutes); // avoid open routes to public until frontend app is working
+  }
 
   // dataBase init
   if (mode === "development") {
